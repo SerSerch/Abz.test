@@ -25,7 +25,6 @@ import { handleInputChange, handleCheckboxChange } from 'containers/handleChange
 class Login extends PureComponent {
     constructor(props) {
         super(props);
-        //todo сделать галочку запомнить меня
         this.state = {
             email: '',
             password: '',
