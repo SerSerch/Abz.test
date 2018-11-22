@@ -19,6 +19,12 @@ export default [
         exact: true
     },
     {
+        path: '/user/:id',
+        component: Comment,
+        exact: true
+    },
+
+    {
         path: '*',
         component: Landing,
         exact: true
