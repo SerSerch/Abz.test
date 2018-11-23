@@ -62,29 +62,20 @@ class Navtop extends PureComponent {
 
         return (
             <Fragment>
-                <AppBar position="fixed">
+                <AppBar position="fixed" color="inherit">
                     <Toolbar>
-                        <IconButton className="menu__button _left"
-                                    color="inherit" aria-label="Menu"
-                                    aria-owns={openMenu ? 'menu-appbar' : undefined}
-                                    aria-haspopup="true"
-                                    onClick={this.toggleDrawer("anchorMenu", true)}
-                                    color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
+
                         <Typography variant="h1" color="inherit" className="menu__caption _small">
                             {caption[location.pathname]}
                         </Typography>
                         <div>
                             <IconButton className="menu__button _right"
-                                        aria-label="Edit"
-                                        aria-owns={openEdit ? 'menu-appbar' : undefined}
+                                        aria-label="Menu"
+                                        aria-owns={openMenu ? 'menu-appbar' : undefined}
                                         aria-haspopup="true"
-                                        onClick={this.handleEdit}
-                                        color="inherit"
-                            >
-                                <MoreIcon />
+                                        onClick={this.toggleDrawer("anchorMenu", true)}
+                                        color="secondary">
+                                <MenuIcon />
                             </IconButton>
                             <Menu
                                 id="edit-bar"

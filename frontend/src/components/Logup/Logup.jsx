@@ -119,8 +119,9 @@ class Logup extends PureComponent {
 
                             <Button
                                 className="login-window__button _send"
-                                variant="contained"
-                                color="primary"
+                                variant="outlined"
+                                color="secondary"
+                                disabled
                                 onClick = {this.onLogupClicked}>
                                 Зарегистрироваться
                             </Button>
