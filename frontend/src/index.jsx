@@ -23,12 +23,14 @@ import  React, {Component, Fragment} from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 
 import Navtop from 'components/Navtop';
 import Footer from 'components/Footer';
 
 import routes from './routes';
 import { store } from './store';
+import { themeAbzTest } from './theme';
 
 /********************************************************************
  * Main															*
@@ -55,7 +57,9 @@ class App extends Component{
 ReactDom.render(
     <Provider store = {store}>
         <BrowserRouter>
-            <App/>
+            <MuiThemeProvider theme={themeAbzTest}>
+                <App/>
+            </MuiThemeProvider>
         </BrowserRouter>
     </Provider>,
     document.getElementById('web-page'));
