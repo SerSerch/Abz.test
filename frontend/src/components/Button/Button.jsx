@@ -39,7 +39,7 @@ const styles = theme => ({
 
 class Button extends PureComponent {
     render() {
-        const { variant, onClick, classes, ...other } = this.props;
+        const { variant, onClick, classes, text, ...other } = this.props;
         return (
             <ButtonM
                 className={classes[variant]}
@@ -48,7 +48,7 @@ class Button extends PureComponent {
                 onClick={onClick}
                 {...other}
             >
-                Contained
+                {text ? text : 'Button'}
             </ButtonM>
         );
     }

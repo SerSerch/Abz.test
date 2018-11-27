@@ -3,14 +3,12 @@ import './Test.scss';
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
-import SvgIcon from '@material-ui/core/SvgIcon';
 
 import { handleInputChange } from 'efi/handleChange';
-import ButtonA from 'components/Button';
+import Button from 'components/Button';
 
 const currencies = [
     {
@@ -73,10 +71,10 @@ class Test extends PureComponent {
                     Lorem ipsum dolor sit amet.
                 </Typography>
                 <Divider />
-                <ButtonA variant="contained" />
-                <ButtonA variant="outlined" /><br/>
-                <ButtonA variant="text" />
-                <ButtonA variant="contained" disabled />
+                <Button variant="contained" text="Primary" />
+                <Button variant="outlined" text="Secondary"/><br/>
+                <Button variant="text" text="Text" />
+                <Button variant="contained" text="Disabled" disabled />
                 <Divider />
                 <Link className="link" to="#">Link</Link>
                 <Link className="link _s _bg-s" to="#">Link</Link>
