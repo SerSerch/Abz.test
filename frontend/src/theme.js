@@ -1,6 +1,17 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 export const themeAbzTest = createMuiTheme({
+    mixins: {
+        toolbar: {
+            minHeight: 64,
+            '@media(min - width: 0px) and (orientation: landscape)': {
+                minHeight: 64
+            },
+            '@media(min - width: 600px)': {
+                minHeight: 64
+            },
+        }
+    },
     typography: {
         useNextVariants: true,
         fontFamily:['Source Sans Pro', 'sans-serif'],
