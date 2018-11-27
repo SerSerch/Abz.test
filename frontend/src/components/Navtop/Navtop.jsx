@@ -28,6 +28,7 @@ const caption = {
     "/login": "Авторизация",
     "/logup": "Регистрация",
     "/api/user": "Пользователь",
+    "/test": "Тест",
 };
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 

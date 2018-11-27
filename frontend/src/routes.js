@@ -1,4 +1,5 @@
 import Landing from 'components/Landing';
+import Test from 'components/Test';
 import Login from 'containers/UserLoginContainer';
 import Logup from 'containers/UserLogupContainer';
 
@@ -23,7 +24,11 @@ export default [
         component: Comment,
         exact: true
     },
-
+    {
+        path: '/test',
+        component: Test,
+        exact: true
+    },
     {
         path: '*',
         component: Landing,
