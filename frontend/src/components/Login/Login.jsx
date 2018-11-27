@@ -1,10 +1,9 @@
 import './Login.scss';
 
 import React, { PureComponent } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -20,7 +19,8 @@ import LockIcon from '@material-ui/icons/LockOutlined';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { handleInputChange, handleCheckboxChange } from 'containers/handleChange';
+import { handleInputChange, handleCheckboxChange } from 'efi/handleChange';
+import Button from 'components/Button';
 
 class Login extends PureComponent {
     constructor(props) {
@@ -133,12 +133,10 @@ class Login extends PureComponent {
                                 label="Запомнить меня"
                             />
                             <Button
-                                className="login-window__button _send"
                                 variant="contained"
-                                color="primary"
-                                onClick = {this.onLoginClicked}>
-                                Войти
-                            </Button>
+                                onClick = {this.onLoginClicked}
+                                text="Войти"
+                            />
                             {(user.error) ?
                                 <div className="login-window__error">{user.error}</div> :
                                 ''}

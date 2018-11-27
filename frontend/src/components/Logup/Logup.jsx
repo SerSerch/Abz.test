@@ -4,9 +4,8 @@ import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
 
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
 
-import { handleInputChange } from 'containers/handleChange';
+import { handleInputChange } from 'efi/handleChange';
 import FormGroup from "@material-ui/core/FormGroup/FormGroup";
 import Paper from "@material-ui/core/Paper/Paper";
 import Avatar from "@material-ui/core/Avatar/Avatar";
@@ -19,6 +18,8 @@ import FormControl from '@material-ui/core/FormControl';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
+
+import Button from 'components/Button';
 
 class Logup extends PureComponent {
     constructor(props) {
@@ -116,15 +117,12 @@ class Logup extends PureComponent {
                                 }
                             />
                             </FormControl>
-
+                            <br/>
                             <Button
-                                className="login-window__button _send"
-                                variant="outlined"
-                                color="secondary"
-                                disabled
-                                onClick = {this.onLogupClicked}>
-                                Зарегистрироваться
-                            </Button>
+                                variant="contained"
+                                onClick = {this.onLogupClicked}
+                                text="Зарегистрироваться"
+                            />
                             {(user.errors) ?
                                 Object.keys(user.errors).map(err => {
                                     return <div key={err} className="login-window__error">{err} {user.errors[err][0]}</div>
