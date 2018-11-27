@@ -1,7 +1,6 @@
 {
   "name": "frontend",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production",
@@ -74,5 +73,9 @@
   },
   "keywords": [],
   "author": "SerSerch",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SerSerch/Abz.test/issues"
+  },
+  "description": ""
 }
