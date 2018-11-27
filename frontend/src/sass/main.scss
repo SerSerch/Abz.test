@@ -7,7 +7,6 @@ body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	font-family: 'Source Sans Pro', sans-serif;
 	background-color: #fff;
 }
 
@@ -18,6 +17,7 @@ body {
 	min-width: 320px;
 	min-height: 320px;
 	margin: 0 auto;
+	font-family: 'Source Sans Pro', sans-serif;
 }
 
 .container {
@@ -38,8 +38,26 @@ body {
 }
 
 .link {
+	display: block;
 	text-decoration: none;
 	outline: none;
+	color: #000;
+	&._s {
+		color: #fff;
+	}
+	&:hover,
+	&:active,
+	&:focus {
+		color: #ef6c00;
+	}
+}
+
+.paragraph._small {
+	font-size: 0.875rem;
+}
+
+._bg-s {
+	background-color: #283593;
 }
 
 @import "media";
