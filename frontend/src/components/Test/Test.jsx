@@ -5,29 +5,37 @@ import { Link } from 'react-router-dom';
 import Typography from "@material-ui/core/Typography";
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
-import MenuItem from '@material-ui/core/MenuItem';
+import MenuItemM from '@material-ui/core/MenuItem';
 
 import { handleInputChange } from 'efi/handleChange';
 import Button from 'components/Button';
+import Input from 'components/Input';
+
+import {withStyles} from "@material-ui/core";
 
 const currencies = [
     {
         value: 'USD',
-        label: '$',
+        label: 'Selected item',
     },
     {
         value: 'EUR',
-        label: '€',
+        label: 'Second item',
     },
     {
         value: 'BTC',
-        label: '฿',
-    },
-    {
-        value: 'JPY',
-        label: '¥',
+        label: 'Thurd item',
     },
 ];
+
+const stylesMenuItem = theme => ({
+    selected: {
+        backgroundColor: 'inherit !important',
+        color: '#fc831f',
+    }
+});
+
+const MenuItem = withStyles(stylesMenuItem)(MenuItemM);
 
 class Test extends PureComponent {
     constructor(props) {
@@ -70,41 +78,52 @@ class Test extends PureComponent {
                 <Typography className="paragraph _small">
                     Lorem ipsum dolor sit amet.
                 </Typography>
+
                 <Divider />
+
                 <Button variant="contained" text="Primary" />
                 <Button variant="outlined" text="Secondary"/><br/>
                 <Button variant="text" text="Text" />
                 <Button variant="contained" text="Disabled" disabled />
+
                 <Divider />
+
                 <Link className="link" to="#">Link</Link>
                 <Link className="link _s _bg-s" to="#">Link</Link>
+
                 <Divider />
-                <TextField
+
+                <Input
                     id="outlined1"
+                    type="text"
+                    variant="outlined"
                     label="Label"
-                    margin="normal"
-                    color="secondary"
                     placeholder="Placeholder"
                     helperText="Assistive text"
+                    margin="normal"
+                    color="secondary"
+                />
+
+                <Input
+                    id="outlined2"
+                    type="text"
                     variant="outlined"
+                    label="Label"
+                    placeholder="Placeholder"
+                    helperText="Assistive text"
+                    value="Input text"
+                    margin="normal"
+                    color="secondary"
+                    error
+                    required
                 />
                 <br/>
-                <TextField
-                    id="outlined1"
-                    label="Label"
-                    margin="normal"
-                    color="secondary"
-                    placeholder="Placeholder"
-                    helperText="Assistive text"
-                    variant="outlined"
-                    error
-                />
 
                 <TextField
                     id="outlined-select-currency"
                     select
                     fullWidth
-                    label="Select"
+                    label="Label text"
                     name="currency"
                     value={this.state.currency}
                     onChange={this.onHandleInputChange}

@@ -92,12 +92,14 @@ export const themeAbzTest = createMuiTheme({
         },
         text: {
             primary: "#393939",
-            secondary: "#010000",
+            secondary: "#8d8c8c",
             disabled: "rgba(0, 0, 0, 0.38)",
             hint: "rgba(0, 0, 0, 0.38)",
         },
         divider: "#e1e1e1",
         action: {
+            hover: "rgba(239, 108, 0, 0.2)",
+            selected: "rgba(239, 108, 0, 0.2)",
             disabled: "#8d8c8c",
             disabledBackground: "#d7d7d7",
         }
