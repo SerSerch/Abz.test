@@ -85,6 +85,7 @@ module.exports = {
             actions: path.resolve(__dirname, 'src', 'actions'),
             reducers: path.resolve(__dirname, 'src', 'reducers'),
             efi: path.resolve(__dirname, 'src', 'efi'),
+            svg: path.resolve(__dirname, 'src', 'svg'),
         }
     },
     plugins :[
