@@ -2,16 +2,36 @@ import './Test.scss';
 
 import React, { PureComponent } from 'react';
 import { Link } from 'react-router-dom';
+import {withStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import Divider from '@material-ui/core/Divider';
 import TextField from '@material-ui/core/TextField';
 import MenuItemM from '@material-ui/core/MenuItem';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import { handleInputChange } from 'efi/handleChange';
 import Button from 'components/Button';
 import Input from 'components/Input';
 
-import {withStyles} from "@material-ui/core";
+import CaretDown from 'svg/CaretDown';
+import Cellphone from 'svg/Cellphone';
+import Facebook from "svg/Facebook";
+import Instagram from "svg/Instagram";
+import LineMenu from "svg/LineMenu";
+import Linkedin from "svg/Linkedin";
+import Mail from "svg/Mail";
+import Phone from "svg/Phone";
+import Pinterest from "svg/Pinterest";
+import SignOut from "svg/SignOut";
+import Twitter from "svg/Twitter";
+import Upload from "svg/Upload";
+
+import CssIcon from 'svg/css.svg';
+import HtmlIcon from 'svg/html.svg';
+import Javascript from 'svg/javascript.svg';
+import Man1 from 'svg/man-laptop-v1.svg';
+import Man2 from 'svg/man-laptop-v2.svg';
+import ManMobile from 'svg/man-mobile.svg';
 
 const currencies = [
     {
@@ -42,19 +62,23 @@ class Test extends PureComponent {
         super(props);
         this.state = {
             currency: '',
+            showPassword: false,
+            inputName: '',
         };
     }
+
+    handleClickShowPassword = () => {
+        this.setState(state => ({ showPassword: !state.showPassword }));
+    };
 
     onHandleInputChange = (event) => {
         handleInputChange(event, this);
     };
 
-    alertT = () => alert('s');
-
     render() {
         return (
             <div className="test">
-                <Typography variant="h1">
+                <Typography variant="h1" className="_ellipsis">
                     Lorem ipsum dolor sit amet.
                 </Typography>
                 <Typography variant="h2">
@@ -95,31 +119,53 @@ class Test extends PureComponent {
 
                 <Input
                     id="outlined1"
+                    name="inputName"
                     type="text"
                     variant="outlined"
-                    label="Label"
+                    label="Disabled"
                     placeholder="Placeholder"
                     helperText="Assistive text"
                     margin="normal"
                     color="secondary"
+                    value={this.state.inputName}
+                    onChange={this.onHandleInputChange}
+                    disabled
                 />
 
                 <Input
                     id="outlined2"
+                    name="inputName"
                     type="text"
                     variant="outlined"
-                    label="Label"
+                    label="Error"
                     placeholder="Placeholder"
                     helperText="Assistive text"
-                    value="Input text"
                     margin="normal"
                     color="secondary"
+                    value={this.state.inputName}
+                    onChange={this.onHandleInputChange}
                     error
+                    required
+                    />
+                <Input
+                    id="outlined3"
+                    name="inputName"
+                    type="password"
+                    variant="outlined"
+                    label="Password"
+                    placeholder="Placeholder"
+                    helperText="Assistive text"
+                    margin="normal"
+                    color="secondary"
+                    value={this.state.inputName}
+                    onChange={this.onHandleInputChange}
+                    onShowPass={this.handleClickShowPassword}
+                    show={this.state.showPassword}
                     required
                 />
                 <br/>
 
-                <TextField
+                <Input
                     id="outlined-select-currency"
                     select
                     fullWidth
@@ -130,14 +176,36 @@ class Test extends PureComponent {
                     helperText="Please select your currency"
                     margin="normal"
                     variant="outlined"
-                    color="inte"
+                    color="secondary"
                 >
                     {currencies.map(option => (
                         <MenuItem key={option.value} value={option.value}>
                             {option.label}
                         </MenuItem>
                     ))}
-                </TextField>
+                </Input>
+                <br/>
+                <Twitter className="icon _p _bg-s" />
+                <Facebook className="icon _p _bg-s" />
+                <Linkedin className="icon _p _bg-s" />
+                <Instagram className="icon _p _bg-s" />
+                <Pinterest className="icon _p _bg-s" />
+                <Mail className="icon _p _bg-s" />
+                <Phone className="icon _p _bg-s" />
+                <Cellphone  className="icon _p _bg-s" />
+                <SignOut className="icon _s" />
+                <LineMenu className="icon _s" />
+                <CaretDown className="icon _s _disable" />
+                <Upload className="icon _s _disable" />
+                <br/>
+                <img src={CssIcon} alt=""/>
+                <img src={HtmlIcon} alt=""/>
+                <img src={Javascript} alt=""/>
+                <img src={Man1} alt=""/>
+                <img src={Man2} alt=""/>
+                <img src={ManMobile} alt=""/>
+                <br/>
+                <Tooltip title="verylongtext" aria-label="verylongtext"><span>Lorem ipsum.</span></Tooltip>
             </div>
         );
     }

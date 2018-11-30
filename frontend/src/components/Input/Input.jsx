@@ -9,6 +9,7 @@ import OutlinedInputM from '@material-ui/core/OutlinedInput';
 import InputLabelM from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import Select from '@material-ui/core/Select';
 
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
@@ -26,56 +27,98 @@ const stylesInputLabel = theme => ({
 });
 
 const stylesOutlinedInput = theme => ({
-    notchedOutline: {
-        border: '1px solid #b7b7b7 !important',
-    }
 });
 
 const InputLabel = withStyles(stylesInputLabel)(InputLabelM);
 const OutlinedInput = withStyles(stylesOutlinedInput)(OutlinedInputM);
 
-const endAdornment = (state, disabled, onClick) => {
-    return <InputAdornment position="end">
-        <IconButton
-            aria-label="Toggle password visibility"
-            onClick={onClick}
-            disabled={disabled}
-        >
-            {state.showPassword ? <Visibility /> : <VisibilityOff />}
-        </IconButton>
-    </InputAdornment>;
+const endAdornment = (showPassword, disabled, onClick) => {
+    return (
+        <InputAdornment position="end">
+            <IconButton
+                aria-label="Toggle password visibility"
+                onClick={onClick}
+                disabled={disabled}
+            >
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+            </IconButton>
+        </InputAdornment>
+    );
+};
+
+const InputVariant = (props ) => {
+    const {
+        value,
+        onChange,
+        onShowPass,
+        id,
+        name,
+        type,
+        label,
+        helperText,
+        variant,
+        margin,
+        select,
+        error,
+        disabled,
+        required,
+        show,
+        fullWidth,
+        children,
+        ...other
+    } = props;
+
+    return (
+        variant == 'outlined' ?
+            <OutlinedInput
+                id={id}
+                name={name}
+                type={type == 'password' && !show ? 'password' : 'text'}
+                {...other}
+                value={!select ? value : ''}
+                onChange={!select ? onChange : ''}
+                endAdornment={type == 'password' ? endAdornment(show, disabled, onShowPass) : ''}
+                labelWidth={0}
+            />
+            :
+            <InputM
+                id={id}
+                name={name}
+                type={type == 'password' && !show ? 'password' : 'text'}
+                {...other}
+                value={!select ? value : ''}
+                onChange={!select ? onChange : ''}
+                endAdornment={type == 'password' ? endAdornment(show, disabled, onShowPass) : ''}
+            />
+
+    );
 };
 
 class Input extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {
-            showPassword: false,
-        };
-    }
-
-    onHandleInputChange = (event) => {
-        handleInputChange(event, this);
-    };
-
-    handleClickShowPassword = () => {
-        this.setState(state => ({ showPassword: !state.showPassword }));
-    };
-
     render() {
         const {
+            value,
+            onChange,
+            onShowPass,
             id,
+            name,
             type,
             label,
             helperText,
             variant,
             margin,
+            select,
             error,
             disabled,
             required,
+            show,
             fullWidth,
+            children,
             ...other
         } = this.props;
+
+        const getSelect = select ? {'select': 'true'} : {} ;
+
         return (
             <FormControl
                 fullWidth={fullWidth}
@@ -84,27 +127,21 @@ class Input extends PureComponent {
                 error={error}
                 disabled={disabled}
                 required={required}
+                {...(select ? {'select': 'true'} : {})}
             >
                 <InputLabel htmlFor={id}>{label}</InputLabel>
-                { variant == 'outlined' ?
-                    <OutlinedInput
-                        id={id}
-                        name={id}
-                        type={type == 'password' && !this.state.showPassword ? 'password' : 'text'}
-                        {...other}
-                        onChange={this.onHandleInputChange}
-                        endAdornment={type == 'password' ? endAdornment(this.state, disabled, this.handleClickShowPassword) : ''}
-                        labelWidth={0}
-                    />
+                {select ?
+                    <Select
+                        value={value}
+                        onChange={onChange}
+                        input={
+                            InputVariant(this.props)
+                        }
+                    >
+                        {children}
+                    </Select>
                     :
-                    <InputM
-                        id={id}
-                        name={id}
-                        type={type == 'password' && !this.state.showPassword ? 'password' : 'text'}
-                        {...other}
-                        onChange={this.onHandleInputChange}
-                        endAdornment={type == 'password' ? endAdornment(this.state, disabled, this.handleClickShowPassword) : ''}
-                    />
+                    InputVariant(this.props)
                 }
                 {helperText ? <FormHelperText>{helperText}</FormHelperText> : ''}
             </FormControl>
