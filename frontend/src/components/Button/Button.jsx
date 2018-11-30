@@ -9,6 +9,7 @@ const styles = theme => ({
         minWidth: '290px',
         minHeight: '40px',
         padding: '5px 15px',
+        backgroundColor: '#ef6c00',
         '&:hover': {
             backgroundColor: '#fc831f'
         },
@@ -18,6 +19,7 @@ const styles = theme => ({
         minHeight: '40px',
         padding: '3px 13px',
         border: '2px solid #ef6c00',
+        color: '#ef6c00',
         '&:hover': {
             padding: '3px 13px',
             border: '2px solid #fc831f',

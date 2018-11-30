@@ -60,4 +60,30 @@ body {
 	background-color: #283593;
 }
 
+._ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.icon {
+	&._p {
+		fill: #fff;
+		&:hover {
+			fill: #ef6c00;
+			cursor: pointer;
+		}
+	}
+	&._s {
+		fill: #283593;
+		&:hover {
+			fill: #2135bc;
+			cursor: pointer;
+		}
+	}
+	&._disable {
+		fill: #949bca !important;
+	}
+}
+
 @import "media";

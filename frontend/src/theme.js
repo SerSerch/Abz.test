@@ -79,7 +79,7 @@ export const themeAbzTest = createMuiTheme({
     },
     palette: {
         primary: {
-            main: '#ef6c00',
+            main: '#b7b7b7',
             contrastText: "#fefefe",
         },
         secondary: {
