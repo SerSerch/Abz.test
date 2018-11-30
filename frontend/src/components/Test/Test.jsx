@@ -141,7 +141,6 @@ class Test extends PureComponent {
                     placeholder="Placeholder"
                     helperText="Assistive text"
                     margin="normal"
-                    color="secondary"
                     value={this.state.inputName}
                     onChange={this.onHandleInputChange}
                     error
@@ -156,7 +155,6 @@ class Test extends PureComponent {
                     placeholder="Placeholder"
                     helperText="Assistive text"
                     margin="normal"
-                    color="secondary"
                     value={this.state.inputName}
                     onChange={this.onHandleInputChange}
                     onShowPass={this.handleClickShowPassword}
@@ -176,7 +174,6 @@ class Test extends PureComponent {
                     helperText="Please select your currency"
                     margin="normal"
                     variant="outlined"
-                    color="secondary"
                 >
                     {currencies.map(option => (
                         <MenuItem key={option.value} value={option.value}>

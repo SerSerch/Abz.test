@@ -14,12 +14,11 @@ import Select from '@material-ui/core/Select';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import { handleInputChange } from 'efi/handleChange';
-
 const stylesInputLabel = theme => ({
     root: {
         backgroundColor: '#fff',
         padding: '0 5px',
+        transform: 'translate(13px, 19px)',
     },
     shrink: {
         color: '#8d8c8c',
@@ -27,6 +26,9 @@ const stylesInputLabel = theme => ({
 });
 
 const stylesOutlinedInput = theme => ({
+    input: {
+        padding: '17.5px 18px',
+    }
 });
 
 const InputLabel = withStyles(stylesInputLabel)(InputLabelM);
@@ -46,7 +48,7 @@ const endAdornment = (showPassword, disabled, onClick) => {
     );
 };
 
-const InputVariant = (props ) => {
+const InputVariant = (props) => {
     const {
         value,
         onChange,
@@ -54,17 +56,12 @@ const InputVariant = (props ) => {
         id,
         name,
         type,
-        label,
-        helperText,
+        placeholder,
+        inputProps,
         variant,
-        margin,
         select,
-        error,
         disabled,
-        required,
         show,
-        fullWidth,
-        children,
         ...other
     } = props;
 
@@ -74,8 +71,9 @@ const InputVariant = (props ) => {
                 id={id}
                 name={name}
                 type={type == 'password' && !show ? 'password' : 'text'}
-                {...other}
+                placeholder={placeholder}
                 value={!select ? value : ''}
+                inputProps={inputProps}
                 onChange={!select ? onChange : ''}
                 endAdornment={type == 'password' ? endAdornment(show, disabled, onShowPass) : ''}
                 labelWidth={0}
@@ -87,6 +85,7 @@ const InputVariant = (props ) => {
                 type={type == 'password' && !show ? 'password' : 'text'}
                 {...other}
                 value={!select ? value : ''}
+                inputProps={inputProps}
                 onChange={!select ? onChange : ''}
                 endAdornment={type == 'password' ? endAdornment(show, disabled, onShowPass) : ''}
             />
@@ -99,10 +98,7 @@ class Input extends PureComponent {
         const {
             value,
             onChange,
-            onShowPass,
             id,
-            name,
-            type,
             label,
             helperText,
             variant,
@@ -111,13 +107,9 @@ class Input extends PureComponent {
             error,
             disabled,
             required,
-            show,
             fullWidth,
             children,
-            ...other
         } = this.props;
-
-        const getSelect = select ? {'select': 'true'} : {} ;
 
         return (
             <FormControl
