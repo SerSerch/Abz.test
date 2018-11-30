@@ -62,7 +62,6 @@ const InputVariant = (props) => {
         select,
         disabled,
         show,
-        ...other
     } = props;
 
     return (
@@ -83,7 +82,7 @@ const InputVariant = (props) => {
                 id={id}
                 name={name}
                 type={type == 'password' && !show ? 'password' : 'text'}
-                {...other}
+                placeholder={placeholder}
                 value={!select ? value : ''}
                 inputProps={inputProps}
                 onChange={!select ? onChange : ''}
