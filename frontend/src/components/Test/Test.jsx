@@ -7,6 +7,8 @@ import Typography from "@material-ui/core/Typography";
 import Divider from '@material-ui/core/Divider';
 import MenuItemM from '@material-ui/core/MenuItem';
 import Tooltip from '@material-ui/core/Tooltip';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 
 import { handleInputChange } from 'efi/handleChange';
 import Button from 'components/Button';
@@ -54,6 +56,13 @@ const stylesMenuItem = theme => ({
     }
 });
 
+const styles = theme => ({
+    paper: {
+        height: 140,
+        padding: 10,
+    },
+});
+
 const MenuItem = withStyles(stylesMenuItem)(MenuItemM);
 
 class Test extends PureComponent {
@@ -75,8 +84,17 @@ class Test extends PureComponent {
     };
 
     render() {
+        const { classes } = this.props;
+        
         return (
             <div className="test">
+                <Grid container className="content-box">
+                        {[0, 1, 2].map(value => (
+                            <Grid key={value} item className="content-item" xs={12} sm={6} md={4} lg={3} xl={6}>
+                                <Paper className={classes.paper} />
+                            </Grid>
+                        ))}
+                </Grid>
                 <Typography variant="h1" className="_ellipsis">
                     Lorem ipsum dolor sit amet.
                 </Typography>
@@ -144,7 +162,7 @@ class Test extends PureComponent {
                     onChange={this.onHandleInputChange}
                     error
                     required
-                    />
+                />
                 <Input
                     id="outlined3"
                     name="inputName"
@@ -207,4 +225,4 @@ class Test extends PureComponent {
     }
 }
 
-export default Test;
+export default withStyles(styles)(Test);
