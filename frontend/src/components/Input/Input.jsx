@@ -1,6 +1,7 @@
 import './Input.scss';
 
 import React, { PureComponent } from 'react';
+import ReactDOM from 'react-dom';
 import { withStyles } from '@material-ui/core/styles';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import IconButton from '@material-ui/core/IconButton';
@@ -16,9 +17,8 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 const stylesInputLabel = theme => ({
     root: {
-        backgroundColor: '#fff',
         padding: '0 5px',
-        transform: 'translate(13px, 19px)',
+        transform: 'translate(13px, 20px)',
     },
     shrink: {
         color: '#8d8c8c',
@@ -27,7 +27,7 @@ const stylesInputLabel = theme => ({
 
 const stylesOutlinedInput = theme => ({
     input: {
-        padding: '17.5px 18px',
+        padding: '18.5px 18px',
     }
 });
 
@@ -48,7 +48,7 @@ const endAdornment = (showPassword, disabled, onClick) => {
     );
 };
 
-const InputVariant = (props) => {
+const InputVariant = (props, labelWidth) => {
     const {
         value,
         onChange,
@@ -75,7 +75,7 @@ const InputVariant = (props) => {
                 inputProps={inputProps}
                 onChange={!select ? onChange : ''}
                 endAdornment={type == 'password' ? endAdornment(show, disabled, onShowPass) : ''}
-                labelWidth={0}
+                labelWidth={labelWidth}
             />
             :
             <InputM
@@ -93,6 +93,21 @@ const InputVariant = (props) => {
 };
 
 class Input extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            labelWidth: 0,
+        };
+    }
+
+    componentDidMount() {
+        this.setState({
+            labelWidth: ReactDOM.findDOMNode(this.InputLabelRef).offsetWidth,
+        });
+    }
+
+    getInputRef = (node) => { this.InputLabelRef = node };
+
     render() {
         const {
             value,
@@ -118,21 +133,25 @@ class Input extends PureComponent {
                 error={error}
                 disabled={disabled}
                 required={required}
-                {...(select ? {'select': 'true'} : {})}
             >
-                <InputLabel htmlFor={id}>{label}</InputLabel>
+                <InputLabel
+                    htmlFor={id}
+                    ref={this.getInputRef}
+                >
+                    {label}
+                </InputLabel>
                 {select ?
                     <Select
                         value={value}
                         onChange={onChange}
                         input={
-                            InputVariant(this.props)
+                            InputVariant(this.props, this.state.labelWidth)
                         }
                     >
                         {children}
                     </Select>
                     :
-                    InputVariant(this.props)
+                    InputVariant(this.props, this.state.labelWidth)
                 }
                 {helperText ? <FormHelperText>{helperText}</FormHelperText> : ''}
             </FormControl>
