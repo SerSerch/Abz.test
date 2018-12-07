@@ -7,7 +7,7 @@ export class Container extends PureComponent {
     render() {
         const { box, className, ...other } = this.props;
         return (
-            <Grid container {...(box ? {className: className + ' content-box'} : {})} {...other}/>
+            <Grid container {...(box ? {className: className + ' content-box'} : {className})} {...other}/>
         );
     }
 }
@@ -16,7 +16,7 @@ export class Item extends PureComponent {
     render() {
         const { noSpace, className, ...other } = this.props;
         return (
-            <Grid item {...(noSpace ? {} : {className: className + ' content-item'})} {...other} />
+            <Grid item {...(noSpace ? {className} : {className: className + ' content-item'})} {...other} />
         );
     }
 }
