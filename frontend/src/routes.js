@@ -1,4 +1,4 @@
-import Landing from 'components/Landing';
+import Landing from 'containers/LandingContainer';
 import Test from 'components/Test';
 import Login from 'containers/UserLoginContainer';
 import Logup from 'containers/UserLogupContainer';
