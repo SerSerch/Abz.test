@@ -7,12 +7,12 @@ import Typography from "@material-ui/core/Typography";
 import Divider from '@material-ui/core/Divider';
 import MenuItemM from '@material-ui/core/MenuItem';
 import Tooltip from '@material-ui/core/Tooltip';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
 import { handleInputChange } from 'efi/handleChange';
 import Button from 'components/Button';
 import Input from 'components/Input';
+import {Container, Item} from 'components/Content';
 
 import CaretDown from 'svg/CaretDown';
 import Cellphone from 'svg/Cellphone';
@@ -88,13 +88,25 @@ class Test extends PureComponent {
         
         return (
             <div className="test">
-                <Grid container className="content-box">
+                <Container box>
+                    <Item noSpace xs={6}>
+                        <Container>
+                            <Item xs={6}>
+                                3
+                            </Item>
+                            <Item xs={6}>
+                                3
+                            </Item>
+                        </Container>
+                    </Item>
+                </Container>
+                <Container box>
                         {[0, 1, 2].map(value => (
-                            <Grid key={value} item className="content-item" xs={12} sm={6} md={4} lg={3} xl={6}>
+                            <Item key={value} xs={12} sm={6} md={4} lg={3} xl={6}>
                                 <Paper className={classes.paper} />
-                            </Grid>
+                            </Item>
                         ))}
-                </Grid>
+                </Container>
                 <Typography variant="h1" className="_ellipsis">
                     Lorem ipsum dolor sit amet.
                 </Typography>
