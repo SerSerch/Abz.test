@@ -74,7 +74,7 @@ class Navtop extends PureComponent {
                                         aria-owns={openMenu ? 'menu-appbar' : undefined}
                                         aria-haspopup="true"
                                         onClick={this.toggleDrawer("anchorMenu", true)}
-                                        color="secondary">
+                                        >
                                 <MenuIcon />
                             </IconButton>
                             <Menu

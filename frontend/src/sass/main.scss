@@ -52,8 +52,11 @@ body {
 	}
 }
 
-.paragraph._small {
-	font-size: 0.875rem;
+.paragraph {
+	&._small {
+		font-size: 0.875rem;
+		line-height: 1.25rem;
+	}
 }
 
 ._bg-s {
