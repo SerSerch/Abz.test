@@ -1,0 +1,40 @@
+/* xl */
+@media (min-width: 1281px) {
+  .first-display {
+    min-height: 677px;
+    background-size: cover;
+    background-position: center 30.5%;
+  }
+}
+
+/* lg */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .first-display {
+    min-height: 726px;
+    background-size: 1327px auto;
+    background-position: left top;
+  }
+}
+
+/* md */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .first-display {
+    min-height: 623px;
+    background-size: cover;
+    background-position: left center;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+
+/* xs sm */
+@media (min-width: 320px) and (max-width: 767px) {
+  .first-display {
+    min-height: 393px;
+    background-size: cover;
+    background-position: 40% center;
+    text-align: center;
+  }
+}

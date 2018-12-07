@@ -2,6 +2,8 @@ import './Landing.scss';
 
 import React, { PureComponent } from 'react';
 
+import FirstDisplay from 'components/FirstDisplay';
+
 class Landing extends PureComponent {
     constructor(props) {
         super(props);
@@ -9,10 +11,9 @@ class Landing extends PureComponent {
     }
 
     render() {
+        const {userSigningUp} = this.props;
         return (
-            <div className="landing">
-                Abz.test
-            </div>
+            <FirstDisplay SingUp={userSigningUp} />
         );
     }
 }
