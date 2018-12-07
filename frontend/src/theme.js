@@ -6,6 +6,15 @@ export const themeAbzTest = createMuiTheme({
             minHeight: 64,
         }
     },
+    breakpoints: {
+        values: {
+            xs: 0,
+            sm: 481,
+            md: 768,
+            lg: 1025,
+            xl: 1281,
+        }
+    },
     typography: {
         useNextVariants: true,
         fontFamily:['Source Sans Pro', 'sans-serif'],
@@ -62,6 +71,14 @@ export const themeAbzTest = createMuiTheme({
             fontSize: '1.25rem',
             fontWeight: 400,
             lineHeight: '1.625rem',
+            '@media (min-width: 768px) and (max-width: 1024px)': {
+                fontSize: '1.125rem',
+                lineHeight: '1.5rem',
+            },
+            '@media (max-width: 767px)': {
+                fontSize: '1rem',
+                lineHeight: '1.375rem',
+            },
         },
         body2: {
             fontSize: '1rem',
