@@ -1,1 +1,36 @@
-.button {}
+@import "../../sass/vars";
+
+.button {
+  &._contained {
+    min-width: 290px;
+    min-height: 40px;
+    padding: 5px 15px;
+    background-color: $p-color;
+    &:hover {
+      background-color: $p-active-color;
+    }
+  }
+  &._outlined {
+    min-width: 290px;
+    min-height: 40px;
+    padding: 3px 13px;
+    border: 2px solid $p-color;
+    color: $p-color;
+    &:hover {
+      padding: 3px 13px;
+      border: 2px solid $p-active-color;
+      background-color: $p-background-color;
+      color: $p-active-color;
+    }
+  }
+  &._text {
+    min-height: 40px;
+    padding: 5px 15px;
+    color: $p-color;
+    &:hover {
+      padding: 5px 15px;
+      background-color: transparent;
+      color: $p-active-color;
+    }
+  }
+}
