@@ -1,13 +1,11 @@
 @import "vars";
-@import "fonts";
-@import "libs";
 
 html,
 body {
 	height: 100%;
 	margin: 0;
 	padding: 0;
-	background-color: #fff;
+	background-color: $background-color;
 }
 
 .wrapper {
@@ -17,7 +15,7 @@ body {
 	min-width: 320px;
 	min-height: 320px;
 	margin: 0 auto;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-family: $default-font;
 }
 
 .container {
@@ -43,12 +41,12 @@ body {
 	outline: none;
 	color: #000;
 	&._s {
-		color: #fff;
+		color: $s-text-color;
 	}
 	&:hover,
 	&:active,
 	&:focus {
-		color: #ef6c00;
+		color: $p-color;
 	}
 }
 
@@ -60,7 +58,7 @@ body {
 }
 
 ._bg-s {
-	background-color: #283593;
+	background-color: $s-color;
 }
 
 ._ellipsis {
@@ -69,23 +67,28 @@ body {
 	text-overflow: ellipsis;
 }
 
+._middle {
+	display: flex;
+	align-items: center;
+}
+
 .icon {
 	&._p {
-		fill: #fff;
+		fill: $p-icon-active;
 		&:hover {
-			fill: #ef6c00;
+			fill: $p-color;
 			cursor: pointer;
 		}
 	}
 	&._s {
-		fill: #283593;
+		fill: $s-color;
 		&:hover {
-			fill: #2135bc;
+			fill: $s-active-color;
 			cursor: pointer;
 		}
 	}
 	&._disable {
-		fill: #949bca !important;
+		fill: $p-icon-disable !important;
 	}
 }
 
