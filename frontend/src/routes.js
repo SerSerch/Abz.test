@@ -2,6 +2,7 @@ import Landing from 'containers/LandingContainer';
 import Test from 'components/Test';
 import Login from 'containers/UserLoginContainer';
 import Logup from 'containers/UserLogupContainer';
+import Redirect from 'components/Redirect';
 
 export default [
     {
@@ -31,7 +32,7 @@ export default [
     },
     {
         path: '*',
-        component: Landing,
+        component: Redirect,
         exact: true
     },
 ]
