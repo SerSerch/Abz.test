@@ -14,11 +14,17 @@ class Button extends PureComponent {
         onClick: PropTypes.func,
     };
 
+    static defaultProps = {
+        variant: 'contained',
+        text: 'Button',
+        color: 'primary',
+    };
+
     render() {
         const {
-            variant='contained',
-            text='Button',
-            color='primary',
+            variant,
+            text,
+            color,
             className,
             onClick,
             ...other

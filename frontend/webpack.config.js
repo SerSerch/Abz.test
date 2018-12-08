@@ -3,8 +3,8 @@ const path = require('path'),
     SpriteLoaderPlugin = require( 'svg-sprite-loader/plugin' ),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
-    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
-    devMode = process.env.NODE_ENV !== 'production';
+    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 module.exports = {
     entry:{
         main: path.resolve(__dirname, 'src', 'index.jsx'),
