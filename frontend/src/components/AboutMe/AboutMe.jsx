@@ -26,23 +26,21 @@ class AboutMe extends PureComponent {
                 <Item xs={12} md={4}>
                     <img src={ManMobile} alt="Me"/>
                 </Item>
-                <Item noSpace xs={12} md={8}>
-                    <Container>
-                        <Item>
-                            <Typography variant="h3">
-                                I am cool frontend developer
-                            </Typography>
-                            <Typography>
-                                When real users have a slow experience on mobile, they're much less likely to find what they are looking for or purchase from you in the future. For many sites this equates to a huge missed opportunity, especially when more than half of visits are abandoned if a mobile page takes over 3 seconds to load.
-                            </Typography>
-                            <Typography>
-                                Last week, Google Search and Ads teams announced two new speed initiatives to help improve user-experience on the web.
-                            </Typography>
-                        </Item>
-                        <Item noSpace>
-                            <Button variant="text" text="Sign Up" onClick={SingUp} />
-                        </Item>
-                    </Container>
+                <Item noSpace xs={12} md={8} container>
+                    <Item>
+                        <Typography variant="h3">
+                            I am cool frontend developer
+                        </Typography>
+                        <Typography>
+                            When real users have a slow experience on mobile, they're much less likely to find what they are looking for or purchase from you in the future. For many sites this equates to a huge missed opportunity, especially when more than half of visits are abandoned if a mobile page takes over 3 seconds to load.
+                        </Typography>
+                        <Typography>
+                            Last week, Google Search and Ads teams announced two new speed initiatives to help improve user-experience on the web.
+                        </Typography>
+                    </Item>
+                    <Item noSpace>
+                        <Button variant="text" text="Sign Up" onClick={SingUp} />
+                    </Item>
                 </Item>
             </Container>
         );
