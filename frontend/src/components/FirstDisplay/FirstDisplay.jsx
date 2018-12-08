@@ -19,8 +19,6 @@ class FirstDisplay extends PureComponent {
                                     Test assignment for Frontend Developer position
                                 </Typography>
                             </Item>
-                        </Container>
-                        <Container>
                             <Item noSpace>
                                 <Typography className="first-display__text" variant="body1" color="secondary">
                                     We kindly remind you that your test assignment should
@@ -29,8 +27,6 @@ class FirstDisplay extends PureComponent {
                                     We look forward to your submission. Good luck! Lorem ipsum dolor sit amet, consectetur.
                                 </Typography>
                             </Item>
-                        </Container>
-                        <Container>
                             <Item>
                                 <Button variant="contained" text="Sign Up" onClick={SingUp} />
                             </Item>
