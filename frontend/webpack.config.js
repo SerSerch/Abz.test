@@ -1,8 +1,10 @@
 const path = require('path'),
     HTMLplugin = require('html-webpack-plugin'),
+    SpriteLoaderPlugin = require( 'svg-sprite-loader/plugin' ),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
-    SpriteLoaderPlugin = require( 'svg-sprite-loader/plugin' );
-
+    UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
+    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
+    devMode = process.env.NODE_ENV !== 'production';
 module.exports = {
     entry:{
         main: path.resolve(__dirname, 'src', 'index.jsx'),
@@ -23,7 +25,7 @@ module.exports = {
             }
         }
     },
-    module:{
+    module: {
         rules :[
             {
                 test: /\.(gif|png|jpe?g)$/,
@@ -76,6 +78,16 @@ module.exports = {
                 ],
             }
         ]
+    },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true,
+            }),
+            new OptimizeCSSAssetsPlugin({})
+        ],
     },
     resolve: {
         extensions: ['.js', '.jsx'],
