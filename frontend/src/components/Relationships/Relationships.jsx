@@ -8,14 +8,8 @@ import {Container, Item} from "components/Content";
 import HtmlIcon from "svg/html.svg";
 import CssIcon from "svg/css.svg";
 import JsIcon from "svg/javascript.svg";
-import ManMobile from "svg/man-mobile.svg";
 
 class Relationships extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-  
     render() {
         return (
             <Container className="aboutme" box justify="center">

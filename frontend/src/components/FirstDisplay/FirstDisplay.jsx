@@ -1,14 +1,20 @@
 import './FirstDisplay.scss';
 
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 
 import {Container, Item} from 'components/Content';
 import Button from 'components/Button';
 
 class FirstDisplay extends PureComponent {
+    static propTypes = {
+        SignUp: PropTypes.func,
+    };
+
     render() {
-        const {SingUp} = this.props;
+        const {SignUp} = this.props;
+
         return (
             <div className="first-display _middle">
                 <Container box>
@@ -27,7 +33,7 @@ class FirstDisplay extends PureComponent {
                             </Typography>
                         </Item>
                         <Item>
-                            <Button variant="contained" text="Sign Up" onClick={SingUp} />
+                            <Button variant="contained" text="Sign Up" onClick={SignUp} />
                         </Item>
                     </Item>
                 </Container>

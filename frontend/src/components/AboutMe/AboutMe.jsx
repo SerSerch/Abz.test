@@ -1,6 +1,7 @@
 import './AboutMe.scss';
 
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 
 import {Container, Item} from "components/Content";
@@ -9,13 +10,13 @@ import Button from 'components/Button';
 import ManMobile from 'svg/man-mobile.svg';
 
 class AboutMe extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+    static propTypes = {
+        SignUp: PropTypes.func,
+    };
 
     render() {
-        const {SingUp} = this.props;
+        const {SignUp} = this.props;
+
         return (
             <Container className="aboutme" box>
                 <Item xs={12}>
@@ -39,7 +40,7 @@ class AboutMe extends PureComponent {
                         </Typography>
                     </Item>
                     <Item noSpace>
-                        <Button variant="text" text="Sign Up" onClick={SingUp} />
+                        <Button variant="text" text="Sign Up" onClick={SignUp} />
                     </Item>
                 </Item>
             </Container>
