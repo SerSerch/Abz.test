@@ -32,7 +32,7 @@ export default [
     },
     {
         path: '*',
-        component: Redirect,
+        component: Landing,
         exact: true
     },
 ]
