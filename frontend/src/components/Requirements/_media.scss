@@ -1,6 +1,14 @@
-@media (-webkit-min-device-pixel-ratio: 2), (min-width: 1900px) {
+@media (-webkit-min-device-pixel-ratio: 2) and (max-width: 1199px),
+(min-width: 1200px) {
   .requirements {
     background-image: url(img/bg-2@2x.jpg);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1200px),
+(min-width: 1900px) {
+  .requirements {
+    background-image: url(img/bg-2@4x.jpg);
   }
 }
 
