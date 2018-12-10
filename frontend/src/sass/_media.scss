@@ -46,19 +46,12 @@
 
 /*
   ##Device = Low Resolution Tablets, Mobiles (Landscape)
-  ##Screen = B/w 481px to 767px
+  ##Screen = B/w 320px to 767px
   320 mobile
 */
 
-@media (min-width: 481px) and (max-width: 767px) {
-
-}
-
-/*
-  ##Device = Most of the Smartphones Mobiles (Portrait)
-  ##Screen = B/w 320px to 479px
-*/
-
-@media (min-width: 320px) and (max-width: 480px) {
-
+@media (min-width: 320px) and (max-width: 767px) {
+  .mobile-hidden {
+    display: none;
+  }
 }

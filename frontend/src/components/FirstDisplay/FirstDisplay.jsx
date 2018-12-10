@@ -19,20 +19,22 @@ class FirstDisplay extends PureComponent {
             <div className="first-display _middle">
                 <Container box>
                     <Item noSpace xs={12} md={7} lg={6} xl={6} container>
-                        <Item>
+                        <Item xs={12}>
                             <Typography variant="h1" color="secondary">
                                 Test assignment for Frontend Developer position
                             </Typography>
                         </Item>
-                        <Item noSpace>
+                        <Item noSpace xs={12}>
                             <Typography className="first-display__text" variant="body1" color="secondary">
                                 We kindly remind you that your test assignment should
                                 be submitted as a link to github/bitbucket repository.
-                                Please be patient, we consider and respond to every application that meets minimum requirements.
-                                We look forward to your submission. Good luck!
+                                <span className="mobile-hidden">
+                                    Please be patient, we consider and respond to every application that meets minimum requirements.
+                                    We look forward to your submission. Good luck!
+                                </span>
                             </Typography>
                         </Item>
-                        <Item>
+                        <Item xs={12}>
                             <Button variant="contained" text="Sign Up" onClick={SignUp} />
                         </Item>
                     </Item>
