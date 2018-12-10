@@ -27,6 +27,8 @@ const caption = {
     "/#aboutme-hash": "About Me",
     "/#relationships-hash": "Relationships",
     "/#requirements-hash": "Requirements",
+    "/#users-hash": "Users",
+    "/#signup-hash": "Sign Up",
 };
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -57,8 +59,20 @@ class Navtop extends PureComponent {
                                 <Link to="/" className="link">
                                     <Logo className="logo _navtop" />
                                 </Link>
-                                <div className="grow"></div>
-                                <div className="section-mobile">
+                                <div className="grow">
+                                    <Container className="section _desctop" justify="center">
+                                        {Object.keys(caption).map(link => (
+                                            <HashLink to={link} className="link" key={link}>
+                                                <Item>
+                                                    <Typography>
+                                                        {caption[link]}
+                                                    </Typography>
+                                                </Item>
+                                            </HashLink>
+                                        ))}
+                                    </Container>
+                                </div>
+                                <div className="section _mobile">
                                     <IconButton className="menu__button _right"
                                                 aria-label="Menu"
                                                 aria-owns={openMenu ? 'menu-appbar' : undefined}

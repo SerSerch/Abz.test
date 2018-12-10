@@ -1,0 +1,15 @@
+@media (min-width: 1025px) {
+  .section {
+    &._mobile {
+      display: none;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .section {
+    &._desctop {
+      display: none;
+    }
+  }
+}
