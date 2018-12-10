@@ -3,7 +3,25 @@
   background-repeat: no-repeat;
   align-items: center;
   box-sizing: border-box;
-  padding-bottom: 10px;
+  padding: 119px 0 23px;
+  &__text {
+    padding-bottom: 22px;
+  }
+  &__man {
+    display: block;
+    width: 429px;
+    height: 370px;
+    margin: 0 auto;
+  }
+  &__caption {
+    padding-bottom: 24px;
+  }
+}
+
+.section {
+  &._md {
+    display: none;
+  }
 }
 
 @import "media";
