@@ -1,1 +1,24 @@
-.aboutme {}
+.aboutme {
+  padding: 119px 0 15px;
+  &__caption {
+    padding-bottom: 28px;
+  }
+  &__man {
+    display: block;
+    width: 100%;
+    max-width: 289px;
+    height: 290px;
+    margin: 0 auto;
+  }
+  &__text {
+    padding: 6px 0 16px;
+  }
+}
+
+.button {
+  &._aboutme {
+    margin: 0 -15px;
+  }
+}
+
+@import "media";
