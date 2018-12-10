@@ -2,6 +2,7 @@
 import './Navtop.scss';
 import React, { PureComponent, Fragment } from 'react';
 import { withRouter, Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -14,20 +15,18 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
-import MenuIcon from '@material-ui/icons/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import Divider from '@material-ui/core/Divider';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import DraftsIcon from '@material-ui/icons/Drafts';
 import SendIcon from '@material-ui/icons/Send';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
+import {Container, Item} from 'components/Content';
+import LineMenu from 'svg/LineMenu';
+import Logo from 'svg/Logo';
+
 const caption = {
-    "/": "Abz",
-    "/login": "Авторизация",
-    "/logup": "Регистрация",
-    "/api/user": "Пользователь",
-    "/test": "Тест",
+    "/#aboutme-hash": "About Me",
+    "/#relationships-hash": "Relationships",
+    "/#requirements-hash": "Requirements",
 };
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
@@ -36,7 +35,6 @@ class Navtop extends PureComponent {
         super(props);
         this.state = {
             anchorMenu: false,
-            anchorEdit: null,
         };
     }
 
@@ -46,72 +44,33 @@ class Navtop extends PureComponent {
         });
     };
 
-    handleEdit = event => {
-        this.setState({ anchorEdit: event.currentTarget });
-    };
-
-    handleClose = () => {
-        this.setState({ anchorMenu: null, anchorEdit: null });
-    };
-
     render() {
-        const { anchorMenu, anchorEdit } = this.state;
+        const { anchorMenu } = this.state;
         const openMenu = Boolean(anchorMenu);
-        const openEdit = Boolean(anchorEdit);
-        const { match, location, history } = this.props;
 
         return (
             <Fragment>
                 <AppBar position="fixed" color="inherit">
-                    <Toolbar>
-
-                        <Typography variant="h1" color="inherit" className="menu__caption _small">
-                            {caption[location.pathname]}
-                        </Typography>
-                        <div>
-                            <IconButton className="menu__button _right"
-                                        aria-label="Menu"
-                                        aria-owns={openMenu ? 'menu-appbar' : undefined}
-                                        aria-haspopup="true"
-                                        onClick={this.toggleDrawer("anchorMenu", true)}
-                                        >
-                                <MenuIcon />
-                            </IconButton>
-                            <Menu
-                                id="edit-bar"
-                                anchorEl={anchorEdit}
-                                anchorOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                transformOrigin={{
-                                    vertical: 'top',
-                                    horizontal: 'right',
-                                }}
-                                open={openEdit}
-                                onClose={this.handleClose}
-                            >
-                                <MenuItem>
-                                    <ListItemIcon>
-                                        <SendIcon />
-                                    </ListItemIcon>
-                                    <ListItemText inset primary="Sent mail" />
-                                </MenuItem>
-                                <MenuItem>
-                                    <ListItemIcon>
-                                        <DraftsIcon />
-                                    </ListItemIcon>
-                                    <ListItemText inset primary="Drafts" />
-                                </MenuItem>
-                                <MenuItem>
-                                    <ListItemIcon>
-                                        <InboxIcon />
-                                    </ListItemIcon>
-                                    <ListItemText inset primary="Inbox" />
-                                </MenuItem>
-                            </Menu>
-                        </div>
-                    </Toolbar>
+                    <Container box>
+                        <Item xs={12} noSpace>
+                            <Toolbar>
+                                <Link to="/" className="link">
+                                    <Logo className="logo _navtop" />
+                                </Link>
+                                <div className="grow"></div>
+                                <div className="section-mobile">
+                                    <IconButton className="menu__button _right"
+                                                aria-label="Menu"
+                                                aria-owns={openMenu ? 'menu-appbar' : undefined}
+                                                aria-haspopup="true"
+                                                onClick={this.toggleDrawer("anchorMenu", true)}
+                                    >
+                                        <LineMenu className="icon _s" />
+                                    </IconButton>
+                                </div>
+                            </Toolbar>
+                        </Item>
+                    </Container>
                 </AppBar>
                 <SwipeableDrawer disableBackdropTransition={!iOS} disableDiscovery={iOS}
                                  open={openMenu}
@@ -132,15 +91,17 @@ class Navtop extends PureComponent {
                             </ListItem>
                             <Divider />
                             {Object.keys(caption).map(link => (
-                                <Link to={link} className="link" key={link}>
+                                <HashLink to={link} className="link" key={link}>
                                     <ListItem button>
-                                        <ListItemIcon>
-                                            <SendIcon/>
-                                        </ListItemIcon>
-                                        <ListItemText inset primary={caption[link]}/>
+                                        <ListItemText primary={caption[link]}/>
                                     </ListItem>
-                                </Link>
+                                </HashLink>
                             ))}
+                            <Link to="/test" className="link">
+                                <ListItem button>
+                                    <ListItemText primary="Тест" />
+                                </ListItem>
+                            </Link>
                         </List>
                     </div>
                 </SwipeableDrawer>

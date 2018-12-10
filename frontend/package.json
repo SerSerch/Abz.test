@@ -27,6 +27,7 @@
     "react-holder-component": "^1.0.5",
     "react-redux": "^5.1.0",
     "react-router-dom": "^4.3.1",
+    "react-router-hash-link": "^1.2.1",
     "redux": "^4.0.1",
     "redux-actions": "^2.6.4",
     "redux-thunk": "^2.3.0",

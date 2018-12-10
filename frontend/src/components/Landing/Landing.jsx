@@ -22,8 +22,11 @@ class Landing extends PureComponent {
         return (
             <Fragment>
                 <FirstDisplay SignUp={userSigningUp} />
+                <div id="aboutme-hash" className="hash"></div>
                 <AboutMe SignUp={userSigningUp} />
+                <div id="relationships-hash" className="hash"></div>
                 <Relationships />
+                <div id="requirements-hash" className="hash"></div>
                 <Requirements />
             </Fragment>
         );
