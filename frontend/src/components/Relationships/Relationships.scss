@@ -1,1 +1,15 @@
-.relationships {}
+.relationships {
+  padding: 29px 0 137px;
+  &__iamage {
+    display: block;
+    width: 98px;
+    height: 118px;
+    padding-top: 12px;
+    padding-bottom: 10px;
+  }
+  &__text {
+    padding-top: 7px;
+  }
+}
+
+@import "media";
