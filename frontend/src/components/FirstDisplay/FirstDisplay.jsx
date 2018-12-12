@@ -35,7 +35,7 @@ class FirstDisplay extends PureComponent {
                             </Typography>
                         </Item>
                         <Item xs={12}>
-                            <Button variant="contained" text="Sign Up" onClick={SignUp} />
+                            <Button variant="contained" text="Sign Up" href="#signup-hash" />
                         </Item>
                     </Item>
                 </Container>

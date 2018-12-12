@@ -41,8 +41,11 @@ class Navtop extends PureComponent {
     }
 
     toggleDrawer = (side, open) => () => {
-        this.setState({
-            [side]: open,
+        this.setState((prevState) => {
+            return {
+                ...prevState,
+                [side]: open,
+            }
         });
     };
 
@@ -71,6 +74,9 @@ class Navtop extends PureComponent {
                                             </HashLink>
                                         ))}
                                     </Container>
+                                </div>
+                                <div className="user section _desctop">
+
                                 </div>
                                 <div className="section _mobile">
                                     <IconButton className="menu__button _right"
