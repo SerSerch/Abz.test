@@ -6,6 +6,8 @@ import FirstDisplay from 'components/FirstDisplay';
 import AboutMe from 'components/AboutMe';
 import Relationships from 'components/Relationships';
 import Requirements from 'components/Requirements';
+import Users from 'containers/OurUsersContainer';
+import SignUp from 'containers/SignUpContainer';
 
 class Landing extends PureComponent {
     constructor(props) {
@@ -28,6 +30,10 @@ class Landing extends PureComponent {
                 <Relationships />
                 <div id="requirements-hash" className="hash"></div>
                 <Requirements />
+                <div id="users-hash" className="hash"></div>
+                <Users />
+                <div id="signup-hash" className="hash"></div>
+                <SignUp />
             </Fragment>
         );
     }
