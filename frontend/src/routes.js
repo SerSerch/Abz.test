@@ -1,23 +1,11 @@
 import Landing from 'containers/LandingContainer';
 import Test from 'components/Test';
-import Login from 'containers/UserLoginContainer';
-import Logup from 'containers/UserLogupContainer';
 import Redirect from 'components/Redirect';
 
 export default [
     {
         path: '/',
         component: Landing,
-        exact: true
-    },
-    {
-        path: '/login',
-        component: Login,
-        exact: true
-    },
-    {
-        path: '/logup',
-        component: Logup,
         exact: true
     },
     {

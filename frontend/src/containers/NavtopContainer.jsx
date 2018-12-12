@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { userSigningIn, userSigningOut, userSigningAuth } from 'actions/users';
-import Login from 'components/Login';
+import Navtop from 'components/Navtop';
 
 const mapStateToProps = (state, ownProps) => {
     return {
@@ -19,4 +19,4 @@ const mapDispatchToProps = (dispatch, props) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Navtop);

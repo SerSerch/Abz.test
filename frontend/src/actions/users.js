@@ -1,4 +1,5 @@
 import { createAction } from 'redux-actions';
+import {ourUsersFirst} from "actions/ourusers";
 
 export const userSignedIn = createAction('[User] signedIn');
 export const userSignedUp = createAction('[User] signedUp');
@@ -12,16 +13,15 @@ export const userSigningIn = (obj) => (dispatch) => {
         user: {email, password, remember_me},
     };
 
-    //todo добавить проверку формы data
     if (data.email && data.password) {
-        fetch('/api/v1/signin', {
+        fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
             method: 'post',
             headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
+                'Token': 'get token',
+                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
             },
             credentials: 'include',
-            body: JSON.stringify(request),
+            body: 'foo=bar&lorem=ipsum',
         }).then((res) => {
             return res.json();
         }).then((user) => {
@@ -77,13 +77,12 @@ export const userSigningOut = (data) => (dispatch) => {
 };
 
 export const userSigningAuth = (obj) => (dispatch) => {
-    const {user, history} = obj;
-    if (!user.isLogined && (localStorage.user || sessionStorage.user)) {
-        const userStorage = JSON.parse(localStorage.user || sessionStorage.user);
-        if (userStorage.hasOwnProperty('email')) {
-            dispatch(userSignedAuth(userStorage));
-            history.push('/score');
-            history.replace('/score');
-        };
-    }
+    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users/1')
+        .then((res) => {
+            return res.json();
+        })
+        .then((users) => {
+            dispatch(userSignedAuth(users));
+        })
+        .catch((err) => dispatch(userSignedAuth(err)) );
 };

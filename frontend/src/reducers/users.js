@@ -57,17 +57,19 @@ export default handleActions({
     },
     [userSignedAuth]: (state, action) => {
         let res = {};
-        if (!action.payload.error) {
+        if (action.payload.hasOwnProperty('user')) {
             res = {
                 isLogined: true,
-                user: action.payload,
+                user: action.payload.user,
             };
         } else {
             res = {
                 ...state,
-                error: action.payload.error,
+                isLogined: false,
+                error: action.payload.message,
             };
         }
+        console.log('user r', res);
         return res;
     },
 }, initialState);

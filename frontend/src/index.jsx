@@ -23,7 +23,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 
-import Navtop from 'components/Navtop';
+import Navtop from 'containers/NavtopContainer';
 import Footer from 'components/Footer';
 
 import routes from './routes';
