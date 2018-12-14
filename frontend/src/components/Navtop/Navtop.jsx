@@ -1,13 +1,11 @@
 
 import './Navtop.scss';
 import React, { PureComponent, Fragment } from 'react';
-import { withRouter, Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
-import Menu from '@material-ui/core/Menu';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -16,7 +14,6 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 
 import Divider from '@material-ui/core/Divider';
-import SendIcon from '@material-ui/icons/Send';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 
 import {Container, Item} from 'components/Content';
@@ -24,13 +21,15 @@ import LineMenu from 'svg/LineMenu';
 import Logo from 'svg/Logo';
 
 const caption = {
-    "/#aboutme-hash": "About Me",
-    "/#relationships-hash": "Relationships",
-    "/#requirements-hash": "Requirements",
-    "/#users-hash": "Users",
-    "/#signup-hash": "Sign Up",
+    "#aboutme": "About Me",
+    "#relationships": "Relationships",
+    "#requirements": "Requirements",
+    "#users": "Users",
+    "#signup": "Sign Up",
 };
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+const scroll = el => el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
 class Navtop extends PureComponent {
     constructor(props) {
@@ -41,8 +40,9 @@ class Navtop extends PureComponent {
     }
 
     componentDidMount() {
-        const { userSigningAuth } = this.props;
-        userSigningAuth();
+        const { userSigningAuth, userGettingToken } = this.props;
+        userGettingToken();
+        userSigningAuth(1);
     }
 
     toggleDrawer = (side, open) => () => {
@@ -55,6 +55,7 @@ class Navtop extends PureComponent {
     };
 
     render() {
+        const {user} = this.props;
         const { anchorMenu } = this.state;
         const openMenu = Boolean(anchorMenu);
 
@@ -64,13 +65,22 @@ class Navtop extends PureComponent {
                     <Container box>
                         <Item xs={12} noSpace>
                             <Toolbar>
-                                <Link to="/" className="link">
+                                <HashLink
+                                    scroll={scroll}
+                                    to="#top"
+                                    className="link"
+                                >
                                     <Logo className="logo _navtop" />
-                                </Link>
+                                </HashLink>
                                 <div className="grow">
                                     <Container className="section _desctop" justify="center">
                                         {Object.keys(caption).map(link => (
-                                            <HashLink to={link} className="link" key={link}>
+                                            <HashLink
+                                                scroll={scroll}
+                                                to={link}
+                                                className="link"
+                                                key={link}
+                                            >
                                                 <Item>
                                                     <Typography>
                                                         {caption[link]}
@@ -116,17 +126,17 @@ class Navtop extends PureComponent {
                             </ListItem>
                             <Divider />
                             {Object.keys(caption).map(link => (
-                                <HashLink to={link} className="link" key={link}>
+                                <HashLink
+                                    scroll={scroll}
+                                    to={link}
+                                    className="link"
+                                    key={link}
+                                >
                                     <ListItem button>
                                         <ListItemText primary={caption[link]}/>
                                     </ListItem>
                                 </HashLink>
                             ))}
-                            <Link to="/test" className="link">
-                                <ListItem button>
-                                    <ListItemText primary="Тест" />
-                                </ListItem>
-                            </Link>
                         </List>
                     </div>
                 </SwipeableDrawer>
@@ -135,4 +145,4 @@ class Navtop extends PureComponent {
     }
 }
 
-export default withRouter(Navtop);
+export default Navtop;
