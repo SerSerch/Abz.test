@@ -30,6 +30,7 @@ class OurUsers extends PureComponent {
     };
 
     render() {
+        const {ourUsers} = this.props;
         return (
             <div className="ourusers">
                 <Container box>
@@ -43,7 +44,31 @@ class OurUsers extends PureComponent {
                             Attention! Sorting users by registration date
                         </Typography>
                     </Item>
-
+                    <Item xs={12} noSpace container>
+                        {ourUsers.users ? ourUsers.users.map(item => {
+                            return (
+                                <Item key={item.id} md={4} wrap="nowrap" container>
+                                    <Item noSpace xs={3}>
+                                        <img className="ourusers__photo" src={item.photo} alt={item.name}/>
+                                    </Item>
+                                    <Item noSpace xs={9}>
+                                        <Typography variant="h4">
+                                            {item.name}
+                                        </Typography>
+                                        <Typography className="_ellipsis">
+                                            {item.position}
+                                        </Typography>
+                                        <Typography className="_ellipsis">
+                                            {item.email}
+                                        </Typography>
+                                        <Typography className="_ellipsis">
+                                            {item.phone}
+                                        </Typography>
+                                    </Item>
+                                </Item>
+                            );
+                        }) : ''}
+                    </Item>
                     <Item xs={12} noSpace container justify="center">
                         <Button variant="outlined" text="Show more" onClick={this.nextPage}/><br/>
                     </Item>

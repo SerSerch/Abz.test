@@ -1,7 +1,14 @@
 .ourusers {
   padding: 120px 0 19px;
   min-height: 703px;
+  box-sizing: border-box;
   &__item {
     padding-bottom: 60px;
+  }
+  &__photo {
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
   }
 }

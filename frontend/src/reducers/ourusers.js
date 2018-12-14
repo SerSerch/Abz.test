@@ -12,7 +12,7 @@ export default handleActions({
         if (action.payload.hasOwnProperty('users')) {
             res = {
                 nextUrl: action.payload.links.next_url,
-                ourUsers: action.payload.users,
+                users: action.payload.users,
             };
         } else {
             res = {
@@ -21,7 +21,6 @@ export default handleActions({
                 error: action.payload.message,
             };
         }
-        console.log("ourUsersFirst", res);
         return res;
     },
     [ourUsersNext]: (state, action) => {
@@ -29,7 +28,7 @@ export default handleActions({
         if (action.payload.hasOwnProperty('users')) {
             res = {
                 nextUrl: action.payload.links.next_url,
-                ourUsers: state.ourUsers.concat(action.payload.users),
+                users: state.users.concat(action.payload.users),
             };
         } else {
             res = {
@@ -38,7 +37,6 @@ export default handleActions({
                 error: action.payload.message,
             };
         }
-        console.log("ourUsersNext",res);
         return res;
     },
 }, initialState);
