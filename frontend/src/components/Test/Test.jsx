@@ -203,13 +203,8 @@ class Test extends PureComponent {
                     helperText="Please select your currency"
                     margin="normal"
                     variant="outlined"
-                >
-                    {currencies.map(option => (
-                        <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                        </MenuItem>
-                    ))}
-                </Input>
+                    currencies={currencies}
+                />
                 <br/>
                 <Twitter className="icon _p _bg-s" />
                 <Facebook className="icon _p _bg-s" />
