@@ -1,22 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
-//import { testSigningIn } from 'actions/signups';
+import { userSigningUp } from 'actions/users';
 import SignUp from 'components/SignUp';
 
 
 function mapStateToProps(state, ownProps) {
     return {
-        //отвечает за то что будет в props компонента из store
         ...ownProps,
-        //signup: state.signup,
+        user: state.user,
     }
 }
 
 function mapDispatchToProps(dispatch, props) {
     return {
-        //отвечает за то что будет в props компонента из actions
         ...props,
-        //testSigningIn: (data) => dispatch(testSigningIn(data)),
+        userSigningUp: (data) => dispatch(userSigningUp(data)),
     }
 }
 

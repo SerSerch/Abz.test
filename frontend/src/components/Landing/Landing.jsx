@@ -23,16 +23,17 @@ class Landing extends PureComponent {
         const {userSigningUp} = this.props;
         return (
             <Fragment>
+                <div id="top" className="hash"></div>
                 <FirstDisplay SignUp={userSigningUp} />
-                <div id="aboutme-hash" className="hash"></div>
+                <div id="aboutme" className="hash"></div>
                 <AboutMe SignUp={userSigningUp} />
-                <div id="relationships-hash" className="hash"></div>
+                <div id="relationships" className="hash"></div>
                 <Relationships />
-                <div id="requirements-hash" className="hash"></div>
+                <div id="requirements" className="hash"></div>
                 <Requirements />
-                <div id="users-hash" className="hash"></div>
+                <div id="users" className="hash"></div>
                 <Users />
-                <div id="signup-hash" className="hash"></div>
+                <div id="signup" className="hash"></div>
                 <SignUp />
             </Fragment>
         );

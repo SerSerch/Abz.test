@@ -1,56 +1,31 @@
 import { createAction } from 'redux-actions';
-import {ourUsersFirst} from "actions/ourusers";
 
 export const userSignedIn = createAction('[User] signedIn');
 export const userSignedUp = createAction('[User] signedUp');
 export const userSignedOut = createAction('[User] signedOut');
 export const userSignedAuth = createAction('[User] signedAuth');
+export const userGetToken = createAction('[User] getToken');
 
 export const userSigningIn = (obj) => (dispatch) => {
-    const {data, history} = obj;
-    const {email, password, remember_me} = data;
-    const request = {
-        user: {email, password, remember_me},
-    };
-
-    if (data.email && data.password) {
-        fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
-            method: 'post',
-            headers: {
-                'Token': 'get token',
-                "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-            },
-            credentials: 'include',
-            body: 'foo=bar&lorem=ipsum',
-        }).then((res) => {
-            return res.json();
-        }).then((user) => {
-            const storage = data.remember_me ? localStorage : sessionStorage;
-            storage.user = JSON.stringify(user);
-
-            dispatch(userSignedIn(user));
-            history.push('/');
-            history.replace('/');
-        }).catch((err) => console.log('error catch', err));
-    }
+    consile.log('userSigningIn');
 };
 
 export const userSigningUp = (obj) => (dispatch) => {
-    const {data, history} = obj;
-    const {email, password, remember_me} = data;
-    const request = {
-        user: {email, password, remember_me},
-    };
-    //todo добавить проверку формы data
-    if (data.email && data.password) {
-        fetch('/api/v1/signup', {
+    const {token, inputName, inputEmail, inputPhone, inputPosition, inputFile} = obj;
+    const formData = new FormData();
+
+    formData.append('name', inputName);
+    formData.append('email', inputEmail);
+    formData.append('phone',  inputPhone);
+    formData.append('position_id', inputPosition);
+    formData.append('photo', inputFile);
+        fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
             method: 'post',
             headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
+                'Token': token,
+                'Content-Type': 'multipart/form-data'
             },
-            credentials: 'include',
-            body: JSON.stringify(request),
+            body: formData,
         }).then((res) => {
             return res.json();
         }).then((user) => {
@@ -58,10 +33,7 @@ export const userSigningUp = (obj) => (dispatch) => {
             storage.user = JSON.stringify(user);
 
             dispatch(userSignedUp(user));
-            history.push('/');
-            history.replace('/');
-        }).catch((err) => console.log('error catch', err));
-    }
+        }).catch((err) => dispatch(userSignedUp(err)) );
 };
 
 export const userSigningOut = (data) => (dispatch) => {
@@ -76,8 +48,8 @@ export const userSigningOut = (data) => (dispatch) => {
     }).catch((err) => console.log('error catch', err));
 };
 
-export const userSigningAuth = (obj) => (dispatch) => {
-    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users/1')
+export const userSigningAuth = (id) => (dispatch) => {
+    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users/' + id)
         .then((res) => {
             return res.json();
         })
@@ -85,4 +57,15 @@ export const userSigningAuth = (obj) => (dispatch) => {
             dispatch(userSignedAuth(users));
         })
         .catch((err) => dispatch(userSignedAuth(err)) );
+};
+
+export const userGettingToken = () => (dispatch) => {
+    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/token')
+        .then((res) => {
+            return res.json();
+        })
+        .then((token) => {
+            dispatch(userGetToken(token));
+        })
+        .catch((err) => dispatch(userGetToken(err)) );
 };

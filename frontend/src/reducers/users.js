@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { userSignedIn, userSignedUp, userSignedOut, userSignedAuth } from 'actions/users';
+import { userSignedIn, userSignedUp, userSignedOut, userSignedAuth, userGetToken } from 'actions/users';
 
 const initialState = {
     isLogined: false,
@@ -12,8 +12,10 @@ export default handleActions({
 
         if (!action.payload.hasOwnProperty('error') && action.payload.hasOwnProperty('email')) {
             res = {
+                ...state,
                 isLogined: true,
                 user: action.payload,
+                errors: false,
             };
         } else {
             res = {
@@ -28,8 +30,10 @@ export default handleActions({
 
         if (!action.payload.hasOwnProperty('errors') && action.payload.hasOwnProperty('email')) {
             res = {
+                ...state,
                 isLogined: true,
                 user: action.payload,
+                errors: false,
             };
         } else {
             res = {
@@ -40,27 +44,16 @@ export default handleActions({
         return res;
     },
     [userSignedOut]: (state, action) => {
-        let res = {};
 
-        if (!action.payload.hasOwnProperty('error') && action.payload.hasOwnProperty('out')) {
-            res = {
-                isLogined: false,
-                user: action.payload,
-            };
-        } else {
-            res = {
-                ...state,
-                error: action.payload.error,
-            };
-        }
-        return res;
     },
     [userSignedAuth]: (state, action) => {
         let res = {};
         if (action.payload.hasOwnProperty('user')) {
             res = {
+                ...state,
                 isLogined: true,
                 user: action.payload.user,
+                error: false,
             };
         } else {
             res = {
@@ -69,7 +62,21 @@ export default handleActions({
                 error: action.payload.message,
             };
         }
-        console.log('user r', res);
+        return res;
+    },
+    [userGetToken]: (state, action) => {
+        let res = {...state};
+        if (action.payload.hasOwnProperty('token')) {
+            res = {
+                ...state,
+                token: action.payload.token,
+            };
+        } else {
+            res = {
+                ...state,
+                error: action.payload.message,
+            };
+        }
         return res;
     },
 }, initialState);
