@@ -1,20 +1,20 @@
 @media (-webkit-min-device-pixel-ratio: 2) and (max-width: 1199px),
 (min-width: 1200px) {
-  .first-display {
+  .header {
     background-image: url(img/bg-1@2x.jpg);
   }
 }
 
 @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1200px),
 (min-width: 1900px) {
-  .first-display {
+  .header {
     background-image: url(img/bg-1@4x.jpg);
   }
 }
 
 /* xl */
 @media (min-width: 1281px) {
-  .first-display {
+  .header {
     min-height: 677px;
     background-size: cover;
     background-position: center 30.5%;
@@ -23,7 +23,7 @@
 
 /* lg */
 @media (min-width: 1025px) and (max-width: 1280px) {
-  .first-display {
+  .header {
     min-height: 726px;
     background-size: 1327px auto;
     background-position: left top;
@@ -32,7 +32,7 @@
 
 /* md */
 @media (min-width: 768px) and (max-width: 1024px) {
-  .first-display {
+  .header {
     min-height: 623px;
     background-size: cover;
     background-position: left center;
@@ -45,7 +45,7 @@
 
 /* xs sm */
 @media (min-width: 320px) and (max-width: 767px) {
-  .first-display {
+  .header {
     min-height: 393px;
     background-size: cover;
     background-position: 40% center;
