@@ -1,20 +1,13 @@
 import './Header.scss';
 
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 
 import {Container, Item} from 'components/Content';
 import Button from 'components/Button';
 
 class Header extends PureComponent {
-    static propTypes = {
-        SignUp: PropTypes.func,
-    };
-
     render() {
-        const {SignUp} = this.props;
-
         return (
             <header className="header _middle">
                 <Container box>
@@ -36,7 +29,6 @@ class Header extends PureComponent {
                         </Item>
                         <Item xs={12}>
                             <Button variant="contained" text="Sign Up" href="#signup" />
-                            sdfsd
                         </Item>
                     </Item>
                 </Container>

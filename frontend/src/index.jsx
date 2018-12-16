@@ -46,7 +46,7 @@ class App extends Component{
                         </Switch>
                     </main>
                 </div>
-                <Footer className="footer" />
+                <Footer />
             </Fragment>
         );
     }

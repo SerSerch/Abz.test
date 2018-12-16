@@ -12,7 +12,7 @@ import JsIcon from "svg/javascript.svg";
 class Relationships extends PureComponent {
     render() {
         return (
-            <Container className="relationships" box justify="center">
+            <Container component="section" className="relationships" box justify="center">
                 <Item md={10} lg={8} xl={6}>
                     <Typography variant="h2" align="center">
                         About my relationships with

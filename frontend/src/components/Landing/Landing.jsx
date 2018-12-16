@@ -1,8 +1,7 @@
 import './Landing.scss';
 
 import React, { PureComponent, Fragment } from 'react';
-import PropTypes from 'prop-types';
-import FirstDisplay from 'components/FirstDisplay';
+import Header from 'components/Header';
 import AboutMe from 'components/AboutMe';
 import Relationships from 'components/Relationships';
 import Requirements from 'components/Requirements';
@@ -10,23 +9,13 @@ import Users from 'containers/OurUsersContainer';
 import SignUp from 'containers/SignUpContainer';
 
 class Landing extends PureComponent {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
-    static propTypes = {
-        userSigningUp: PropTypes.func,
-    };
-
     render() {
-        const {userSigningUp} = this.props;
         return (
             <Fragment>
                 <div id="top" className="hash"></div>
-                <FirstDisplay SignUp={userSigningUp} />
+                <Header />
                 <div id="aboutme" className="hash"></div>
-                <AboutMe SignUp={userSigningUp} />
+                <AboutMe />
                 <div id="relationships" className="hash"></div>
                 <Relationships />
                 <div id="requirements" className="hash"></div>

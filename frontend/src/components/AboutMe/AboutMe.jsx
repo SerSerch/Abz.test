@@ -1,7 +1,6 @@
 import './AboutMe.scss';
 
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import Typography from "@material-ui/core/Typography";
 
 import {Container, Item} from "components/Content";
@@ -10,15 +9,9 @@ import Button from 'components/Button';
 import ManMobile from 'svg/man-mobile.svg';
 
 class AboutMe extends PureComponent {
-    static propTypes = {
-        SignUp: PropTypes.func,
-    };
-
     render() {
-        const {SignUp} = this.props;
-
         return (
-            <Container className="aboutme" box>
+            <Container component="section" className="aboutme" box>
                 <Item xs={12} className="aboutme__caption">
                     <Typography variant="h2" align="center">
                         Let's get acquainted
@@ -38,7 +31,7 @@ class AboutMe extends PureComponent {
                         <Typography className="aboutme__text">
                             Last week, Google Search and Ads teams announced two new speed initiatives to help improve user-experience on the web.
                         </Typography>
-                        <Button className="_aboutme" variant="text" text="Sign Up" onClick={SignUp} />
+                        <Button className="_aboutme" variant="text" text="Sign Up" href="#signup" />
                     </Item>
                 </Item>
             </Container>

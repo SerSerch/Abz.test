@@ -61,7 +61,7 @@ class Navtop extends PureComponent {
 
         return (
             <Fragment>
-                <AppBar position="fixed" color="inherit">
+                <AppBar component="nav" position="fixed" color="inherit">
                     <Container box>
                         <Item xs={12} noSpace>
                             <Toolbar>

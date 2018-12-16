@@ -10,7 +10,7 @@ import ManLaptop2 from 'svg/man-laptop-v2.svg';
 class Requirements extends PureComponent {
     render() {
         return (
-            <div className="requirements">
+            <section className="requirements">
                 <Container box justify="center">
                     <Item xs={12} md={8} lg={12} className="requirements__caption">
                         <Typography variant="h2" align="center" color="secondary">
@@ -33,7 +33,7 @@ class Requirements extends PureComponent {
                         <img className="requirements__man section _md" src={ManLaptop2} alt="Laptop"/>
                     </Item>
                 </Container>
-            </div>
+            </section>
         );
     }
 }
