@@ -1,0 +1,78 @@
+/* xl */
+@media (min-width: 1281px) {
+  .ourusers {
+    &__description {
+      padding-left: 19px;
+    }
+    &__item {
+      padding-bottom: 44px;
+    }
+  }
+}
+
+/* lg */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .ourusers {
+    &__description {
+      padding-left: 6px;
+    }
+    &__item {
+      padding-bottom: 46px;
+    }
+  }
+}
+
+/* md */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .ourusers {
+    padding: 99px 0 19px;
+    text-align: center;
+    &__box-users {
+      padding: 23px 0 38px;
+    }
+    &__item {
+      padding-bottom: 23px;
+    }
+    &__photo {
+      margin: 0 auto;
+    }
+    &__name {
+      padding: 12px 0 5px;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+
+/* xs sm */
+@media (min-width: 320px) and (max-width: 767px) {
+  .ourusers {
+    padding: 51px 0 19px;
+    text-align: center;
+    &__box-users {
+      padding: 20px 0 12px;
+    }
+    &__item {
+      padding-bottom: 16px;
+    }
+    &__photo {
+      margin: 0 auto;
+    }
+    &__name {
+      padding: 12px 0 6px;
+    }
+  }
+
+  .section {
+    &._user {
+      display: none;
+    }
+  }
+  .button {
+    &._mobile {
+      display: block;
+    }
+  }
+}

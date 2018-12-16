@@ -7,7 +7,9 @@ import OurUsers from 'components/OurUsers';
 function mapStateToProps(state, ownProps) {
     return {
         ...ownProps,
-        ourUsers: state.ourUsers,
+        users: state.ourUsers.users,
+        nextUrl: state.ourUsers.nextUrl,
+        clippingUsers: state.ourUsers.clippingUsers,
     }
 }
 

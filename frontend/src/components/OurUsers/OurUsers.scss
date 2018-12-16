@@ -1,9 +1,8 @@
 .ourusers {
   padding: 120px 0 19px;
-  min-height: 703px;
   box-sizing: border-box;
-  &__item {
-    padding-bottom: 60px;
+  &__box-users {
+    padding: 42px 0 13px;
   }
   &__photo {
     display: block;
@@ -11,4 +10,14 @@
     height: 70px;
     border-radius: 50%;
   }
+  &__name {
+    padding: 24px 0 9px;
+  }
 }
+
+.button {
+  &._hidden {
+    display: none;
+  }
+}
+@import "media";
