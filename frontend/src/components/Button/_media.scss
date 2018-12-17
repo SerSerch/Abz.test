@@ -1,2 +1,11 @@
 @media (min-width: 320px) and (max-width: 767px) {
+  .button {
+    &._file {
+      display: none;
+    }
+    &._icon {
+      display: flex;
+      width: 56px;
+    }
+  }
 }

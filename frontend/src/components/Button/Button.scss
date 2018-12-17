@@ -2,7 +2,7 @@
 
 .button {
   &._contained {
-    min-width: 290px;
+    width: 290px;
     min-height: 40px;
     padding: 5px 15px;
     background-color: $p-color;
@@ -11,7 +11,7 @@
     }
   }
   &._outlined {
-    min-width: 290px;
+    width: 290px;
     min-height: 40px;
     padding: 3px 13px;
     border: 2px solid $p-color;
@@ -39,10 +39,12 @@
     top: 0;
     right: 0;
     z-index: 100;
-    min-width: 130px;
     width: 130px;
     height: 56px;
     border-radius: 0 4px 4px 0;
+  }
+  &._icon {
+    display: none;
   }
 }
 

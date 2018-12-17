@@ -20,6 +20,7 @@ import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import Button from "components/Button";
 import CaretDown from "svg/CaretDown";
+import Upload from "svg/Upload";
 
 const allowedFileTypes = ["image/jpg", "image/jpeg"];
 
@@ -237,6 +238,17 @@ class Input extends PureComponent {
                         />
                         : ''
                     }
+                    {type == 'file' ?
+                        <Button
+                            component="label"
+                            htmlFor={'_' + id}
+                            variant="outlined"
+                            className="_file _icon"
+                        >
+                            <Upload />
+                        </Button>
+                        : ''
+                    }
                     {select ?
                         <Select
                             value={value}
@@ -246,11 +258,13 @@ class Input extends PureComponent {
                                 InputVariant(this.props, this.state.labelWidth)
                             }
                         >
-                            {currencies.map(option => (
-                                <MenuItem key={option.value} value={option.value}>
-                                    {option.label}
-                                </MenuItem>
-                            ))}
+                            {currencies ? currencies.map(option => (
+                                    <MenuItem key={option.id} value={option.id}>
+                                        {option.name}
+                                    </MenuItem>
+                                ))
+                                : ''
+                            }
                         </Select>
                         :
                         InputVariant(this.props, this.state.labelWidth)
