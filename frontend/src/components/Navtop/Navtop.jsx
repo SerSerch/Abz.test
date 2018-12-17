@@ -40,9 +40,8 @@ class Navtop extends PureComponent {
     }
 
     componentDidMount() {
-        const { userSigningAuth, userGettingToken } = this.props;
-        userGettingToken();
-        userSigningAuth(1);
+        const { userSigningAuth, userId } = this.props;
+        userSigningAuth(userId);
     }
 
     toggleDrawer = (side, open) => () => {

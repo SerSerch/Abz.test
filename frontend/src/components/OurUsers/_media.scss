@@ -1,6 +1,7 @@
 /* xl */
 @media (min-width: 1281px) {
   .ourusers {
+    /*min-height: 703px;*/
     &__description {
       padding-left: 19px;
     }
@@ -72,7 +73,7 @@
   }
   .button {
     &._mobile {
-      display: block;
+      display: flex;
     }
   }
 }

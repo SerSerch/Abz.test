@@ -1,4 +1,4 @@
-import Landing from 'containers/LandingContainer';
+import Landing from 'components/Landing';
 import Test from 'components/Test';
 //import Redirect from 'components/Redirect';
 
