@@ -1,5 +1,15 @@
 .signup {
-  min-height: 670px;
-  padding-top: 120px;
+  padding: 120px 0 118px;
   box-sizing: border-box;
+  &__text {
+    padding: 0 15px;
+  }
+  &__form {
+    padding: 37px 0 11px;
+  }
+  &__item {
+    padding: 8px 15px;
+  }
 }
+
+@import "media";

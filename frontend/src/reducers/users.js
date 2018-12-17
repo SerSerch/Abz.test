@@ -1,50 +1,33 @@
 import { handleActions } from 'redux-actions';
 
-import { userSignedIn, userSignedUp, userSignedOut, userSignedAuth, userGetToken } from 'actions/users';
+import {userSignedUp, userSignedAuth, userGetToken, userGetPositions} from 'actions/users';
 
 const initialState = {
     isLogined: false,
+    user: null,
+    token: null,
+    userId: 1,
+    positions: null,
 };
 
 export default handleActions({
-    [userSignedIn]: (state, action) => {
-        let res = {};
-
-        if (!action.payload.hasOwnProperty('error') && action.payload.hasOwnProperty('email')) {
-            res = {
-                ...state,
-                isLogined: true,
-                user: action.payload,
-                errors: false,
-            };
-        } else {
-            res = {
-                ...state,
-                error: action.payload.error,
-            };
-        }
-        return res;
-    },
     [userSignedUp]: (state, action) => {
         let res = {};
 
-        if (!action.payload.hasOwnProperty('errors') && action.payload.hasOwnProperty('email')) {
+        if (action.payload.success) {
             res = {
                 ...state,
                 isLogined: true,
-                user: action.payload,
+                userId: action.payload.user_id,
                 errors: false,
             };
         } else {
             res = {
                 ...state,
-                errors: action.payload.errors,
+                errors: action.payload.message,
             };
         }
         return res;
-    },
-    [userSignedOut]: (state, action) => {
-
     },
     [userSignedAuth]: (state, action) => {
         let res = {};
@@ -70,6 +53,21 @@ export default handleActions({
             res = {
                 ...state,
                 token: action.payload.token,
+            };
+        } else {
+            res = {
+                ...state,
+                error: action.payload.message,
+            };
+        }
+        return res;
+    },
+    [userGetPositions]: (state, action) => {
+        let res = {...state};
+        if (action.payload.hasOwnProperty('positions')) {
+            res = {
+                ...state,
+                positions: action.payload.positions,
             };
         } else {
             res = {

@@ -1,22 +1,17 @@
 import { createAction } from 'redux-actions';
 
-export const userSignedIn = createAction('[User] signedIn');
 export const userSignedUp = createAction('[User] signedUp');
-export const userSignedOut = createAction('[User] signedOut');
 export const userSignedAuth = createAction('[User] signedAuth');
 export const userGetToken = createAction('[User] getToken');
-
-export const userSigningIn = (obj) => (dispatch) => {
-    consile.log('userSigningIn');
-};
+export const userGetPositions = createAction('[User] getPositions');
 
 export const userSigningUp = (obj) => (dispatch) => {
     const {token, inputName, inputEmail, inputPhone, inputPosition, inputFile} = obj;
-    const formData = new FormData();
+    let formData = new FormData();
 
     formData.append('name', inputName);
     formData.append('email', inputEmail);
-    formData.append('phone',  inputPhone);
+    formData.append('phone',  ('+' + inputPhone.replace(/[^\d]+/g, '')));
     formData.append('position_id', inputPosition);
     formData.append('photo', inputFile);
         fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
@@ -34,18 +29,6 @@ export const userSigningUp = (obj) => (dispatch) => {
 
             dispatch(userSignedUp(user));
         }).catch((err) => dispatch(userSignedUp(err)) );
-};
-
-export const userSigningOut = (data) => (dispatch) => {
-    fetch('/api/v1/signout', {
-        method: 'delete',
-    }).then((res) => {
-        return res.json();
-    }).then((user) => {
-        delete localStorage.user;
-        delete sessionStorage.user;
-        dispatch(userSignedOut(user));
-    }).catch((err) => console.log('error catch', err));
 };
 
 export const userSigningAuth = (id) => (dispatch) => {
@@ -68,4 +51,15 @@ export const userGettingToken = () => (dispatch) => {
             dispatch(userGetToken(token));
         })
         .catch((err) => dispatch(userGetToken(err)) );
+};
+
+export const userGettingPosition = () => (dispatch) => {
+    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/positions')
+        .then((res) => {
+            return res.json();
+        })
+        .then((positions) => {
+            dispatch(userGetPositions(positions));
+        })
+        .catch((err) => dispatch(userGetPositions(err)) );
 };
