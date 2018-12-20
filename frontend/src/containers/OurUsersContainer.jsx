@@ -16,7 +16,7 @@ function mapStateToProps(state, ownProps) {
 function mapDispatchToProps(dispatch, props) {
     return {
         ...props,
-        ourUsersFirstGetting: (data) => dispatch(ourUsersFirstGetting(data)),
+        ourUsersFirstGetting: () => dispatch(ourUsersFirstGetting()),
         ourUsersNextGetting: (data) => dispatch(ourUsersNextGetting(data)),
     }
 }

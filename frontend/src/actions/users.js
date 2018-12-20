@@ -13,6 +13,7 @@ export const userSigningUp = (obj) => (dispatch) => {
         inputPhone,
         inputPosition,
         inputFile,
+        ourUsersFirstGetting,
     } = obj;
     let formData = new FormData();
 
@@ -21,18 +22,20 @@ export const userSigningUp = (obj) => (dispatch) => {
     formData.append('phone',  ('+' + inputPhone.replace(/[^\d]+/g, '')));
     formData.append('position_id', inputPosition);
     formData.append('photo', inputFile);
-        fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
-            method: 'post',
-            headers: {
-                'Token': token
-            },
-            body: formData,
-        }).then((res) => {
-            return res.json();
-        }).then((user) => {
-            console.log(user);
-            dispatch(userSignedUp(user['user_id']));
-        }).catch((err) => {dispatch(userSignedUp(err)); console.log(err) });
+    fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
+        method: 'post',
+        headers: {
+            'Token': token
+        },
+        body: formData,
+    }).then((res) => {
+        return res.json();
+    }).then((user) => {
+        userSigningAuth(user.user_id)(dispatch);
+        ourUsersFirstGetting();
+    }).catch((err) => {
+        dispatch(userSignedUp(err));
+    });
 };
 
 export const userSigningAuth = (id) => (dispatch) => {

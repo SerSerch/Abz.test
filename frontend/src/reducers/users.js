@@ -13,7 +13,6 @@ const initialState = {
 export default handleActions({
     [userSignedUp]: (state, action) => {
         let res = {};
-
         if (action.payload.success) {
             res = {
                 ...state,

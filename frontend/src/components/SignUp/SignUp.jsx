@@ -8,7 +8,8 @@ import {Container, Item} from "components/Content";
 import Button from 'components/Button';
 import Input from "components/Input";
 import {handleInputChange} from "efi/handleChange";
-import {userSigningAuth} from "actions/users";
+
+//todo вынести логику в контейнер
 
 class SignUp extends PureComponent {
     constructor(props) {
@@ -38,15 +39,7 @@ class SignUp extends PureComponent {
         this.isValid();
     }
 
-    cancelButtonClicked = () => {
-        return this.state.cancelButtonClicked;
-    };
-
-    resetCancelButtonClicked = () => {
-        this.setState({ cancelButtonClicked: false });
-    };
-
-    showInvalidFileTypeMessage = (file) =>{
+    showInvalidFileTypeMessage = (file) => {
         this.setState({
             inputFile: {name:''},
             fileContents: '',
@@ -55,18 +48,8 @@ class SignUp extends PureComponent {
         console.log("Tried to upload invalid filetype", file.type);
     };
 
-    showProgressBar = () => {
-        this.setState({ progressBarVisible: true});
-    };
-
-    updateProgressBar = (event) => {
-        this.setState({
-            progressPercent: (event.loaded / event.total) * 100
-        });
-    };
-
     handleFileSelected = (event, file) => {
-        if (file.size < 5242880) {
+        if (file.size <= 5242880) {
             this.setState({
                 inputFile: file,
                 fileContents: event.target.result,
@@ -85,7 +68,13 @@ class SignUp extends PureComponent {
     };
 
     signUp = () => {
-        const {token, userSigningUp, positions, userSigningAuth} = this.props;
+        const {
+            token,
+            userSigningUp,
+            userSigningAuth,
+            userId,
+            ourUsersFirstGetting,
+        } = this.props;
         const {
             inputName,
             inputEmail,
@@ -94,8 +83,17 @@ class SignUp extends PureComponent {
             inputFile,
             isValid
         } = this.state;
+
         if (isValid) {
-            userSigningUp({token, inputName, inputEmail, inputPhone, inputPosition, inputFile, userSigningAuth});
+            userSigningUp({
+                token,
+                inputName,
+                inputEmail,
+                inputPhone,
+                inputPosition,
+                inputFile,
+                ourUsersFirstGetting
+            });
             this.setState({
                 inputName: '',
                 inputEmail: '',
@@ -166,7 +164,7 @@ class SignUp extends PureComponent {
                 isValid: false
             });
         }
-    }
+    };
 
     render() {
         const {positions} = this.props;
@@ -183,11 +181,7 @@ class SignUp extends PureComponent {
             isValid,
         } = this.state;
         const fileEvents = {
-            cancelButtonClicked: this.cancelButtonClicked,
-            resetCancelButtonClicked: this.resetCancelButtonClicked,
             showInvalidFileTypeMessage: this.showInvalidFileTypeMessage,
-            showProgressBar: this.showProgressBar,
-            updateProgressBar: this.updateProgressBar,
             handleFileSelected: this.handleFileSelected
         };
 

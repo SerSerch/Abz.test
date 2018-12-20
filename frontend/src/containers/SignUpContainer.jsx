@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { userSigningUp, userGettingToken, userGettingPosition, userSigningAuth } from 'actions/users';
 import SignUp from 'components/SignUp';
+import {ourUsersFirstGetting} from "actions/ourusers";
 
 
 function mapStateToProps(state, ownProps) {
@@ -11,6 +12,7 @@ function mapStateToProps(state, ownProps) {
         error: state.user.error,
         token: state.user.token,
         positions: state.user.positions,
+        userId: state.user.userId,
     }
 }
 
@@ -21,6 +23,7 @@ function mapDispatchToProps(dispatch, props) {
         userGettingToken: () => dispatch(userGettingToken()),
         userGettingPosition: () => dispatch(userGettingPosition()),
         userSigningAuth: () => dispatch(userSigningAuth()),
+        ourUsersFirstGetting: () => dispatch(ourUsersFirstGetting()),
     }
 }
 
