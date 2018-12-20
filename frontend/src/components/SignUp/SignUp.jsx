@@ -10,6 +10,7 @@ import Input from "components/Input";
 import {handleInputChange} from "efi/handleChange";
 
 //todo вынести логику в контейнер
+//todo сделать проверку props
 
 class SignUp extends PureComponent {
     constructor(props) {
@@ -71,8 +72,6 @@ class SignUp extends PureComponent {
         const {
             token,
             userSigningUp,
-            userSigningAuth,
-            userId,
             ourUsersFirstGetting,
         } = this.props;
         const {
