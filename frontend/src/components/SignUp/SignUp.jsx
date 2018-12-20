@@ -8,17 +8,23 @@ import {Container, Item} from "components/Content";
 import Button from 'components/Button';
 import Input from "components/Input";
 import {handleInputChange} from "efi/handleChange";
+import {userSigningAuth} from "actions/users";
 
 class SignUp extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            inputPosition: '',
             inputName: '',
             inputEmail: '',
             inputPhone: '',
-            cancelButtonClicked: false,
+            inputPosition: '',
             inputFile: {name:''},
+            inputNameError: false,
+            inputEmailError: false,
+            inputPhoneError: false,
+            inputPositionError: false,
+            inputFileError: false,
+            isValid: false
         };
     }
 
@@ -28,9 +34,9 @@ class SignUp extends PureComponent {
         userGettingPosition();
     }
 
-    onHandleInputChange = (event) => {
-        handleInputChange(event, this);
-    };
+    componentDidUpdate() {
+        this.isValid();
+    }
 
     cancelButtonClicked = () => {
         return this.state.cancelButtonClicked;
@@ -41,8 +47,12 @@ class SignUp extends PureComponent {
     };
 
     showInvalidFileTypeMessage = (file) =>{
+        this.setState({
+            inputFile: {name:''},
+            fileContents: '',
+            inputFileError: true,
+        });
         console.log("Tried to upload invalid filetype", file.type);
-        this.setState({errorFile: true});
     };
 
     showProgressBar = () => {
@@ -60,26 +70,118 @@ class SignUp extends PureComponent {
             this.setState({
                 inputFile: file,
                 fileContents: event.target.result,
-                errorFile: false,
+                inputFileError: !this.valid({
+                    name: 'inputFile',
+                    value: file.name
+                }),
+            });
+        } else {
+            this.setState({
+                inputFile: {name:''},
+                fileContents: '',
+                inputFileError: true,
             });
         }
     };
 
     signUp = () => {
-        const {token, userSigningUp} = this.props;
+        const {token, userSigningUp, positions, userSigningAuth} = this.props;
         const {
             inputName,
             inputEmail,
             inputPhone,
             inputPosition,
-            inputFile
+            inputFile,
+            isValid
         } = this.state;
-        //todo добавить проверку формы
-        userSigningUp({token, inputName, inputEmail, inputPhone, inputPosition, inputFile});
+        if (isValid) {
+            userSigningUp({token, inputName, inputEmail, inputPhone, inputPosition, inputFile, userSigningAuth});
+            this.setState({
+                inputName: '',
+                inputEmail: '',
+                inputPhone: '',
+                inputPosition: '',
+                inputFile: {name: ''},
+            });
+        }
     };
+
+    onHandleInputChange = (event) => {
+        handleInputChange(event, this);
+        if (event.target.value.length > 0) {
+            this.setState({
+                [event.target.name + 'Error']: !this.valid(event.target),
+            });
+        } else {
+            this.setState({
+                [event.target.name + 'Error']: false,
+            });
+        }
+    };
+
+    valid = ({name, value}) => {
+        let regexp;
+        switch (name) {
+            case 'inputName':
+                regexp = /^[a-zа-яё]{2,}[a-zа-яё ]*$/i;
+                break;
+            case 'inputEmail':
+                regexp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                break;
+            case 'inputPhone':
+                regexp = /^[\+]?38 \(0[0-9]{2}\)\s\d{3}\s\d{2}\s\d{2}$/;
+                break;
+            case 'inputPosition':
+                regexp = /^\d+$/;
+                break;
+            case 'inputFile':
+                regexp = /^[\wА-Яа-яёЁ]+\.jpe?g$/i;
+                break;
+        }
+
+        return (regexp).test(value);
+    };
+
+    isValid = () => {
+        const {positions} = this.props;
+        const {
+            inputName,
+            inputEmail,
+            inputPhone,
+            inputPosition,
+            inputFile,
+            inputNameError,
+            inputEmailError,
+            inputPhoneError,
+            inputPositionError,
+            inputFileError,
+        } = this.state;
+        if (!inputNameError && !inputEmailError && !inputPhoneError && !inputPositionError && !inputFileError &&
+            inputName && inputEmail && inputPhone && inputPosition >= 1 && inputPosition <= positions.length && inputFile.name) {
+            this.setState({
+                isValid: true
+            });
+        } else {
+            this.setState({
+                isValid: false
+            });
+        }
+    }
 
     render() {
         const {positions} = this.props;
+        const {inputName,
+            inputEmail,
+            inputPhone,
+            inputPosition,
+            inputFile,
+            inputNameError,
+            inputEmailError,
+            inputPhoneError,
+            inputPositionError,
+            inputFileError,
+            isValid,
+        } = this.state;
         const fileEvents = {
             cancelButtonClicked: this.cancelButtonClicked,
             resetCancelButtonClicked: this.resetCancelButtonClicked,
@@ -112,10 +214,11 @@ class SignUp extends PureComponent {
                                 label="Name"
                                 placeholder="Your name"
                                 margin="normal"
-                                value={this.state.inputName}
+                                value={inputName}
                                 onChange={this.onHandleInputChange}
                                 fullWidth
                                 required
+                                error={inputNameError}
                             />
                         </Item>
                         <Item xs={12} md={4} noSpace className="signup__item">
@@ -127,10 +230,11 @@ class SignUp extends PureComponent {
                                 label="Email"
                                 placeholder="Your email"
                                 margin="normal"
-                                value={this.state.inputEmail}
+                                value={inputEmail}
                                 onChange={this.onHandleInputChange}
                                 fullWidth
                                 required
+                                error={inputEmailError}
                             />
                         </Item>
                         <Item xs={12} md={4} noSpace className="signup__item">
@@ -142,10 +246,11 @@ class SignUp extends PureComponent {
                                 label="Phone"
                                 placeholder="+38 (___) ___ __ __"
                                 margin="normal"
-                                value={this.state.inputPhone}
+                                value={inputPhone}
                                 onChange={this.onHandleInputChange}
                                 fullWidth
                                 required
+                                error={inputPhoneError}
                             />
                         </Item>
                         <Item xs={12} md={6} noSpace className="signup__item">
@@ -155,12 +260,13 @@ class SignUp extends PureComponent {
                                 fullWidth
                                 label="Select you position"
                                 name="inputPosition"
-                                value={this.state.inputPosition}
+                                value={inputPosition}
                                 onChange={this.onHandleInputChange}
                                 margin="normal"
                                 variant="outlined"
                                 currencies={positions}
                                 required
+                                error={inputPositionError}
                             />
                         </Item>
                         <Item xs={12} md={6} noSpace className="signup__item">
@@ -172,17 +278,17 @@ class SignUp extends PureComponent {
                                 placeholder="Upload your photo"
                                 helperText="File format jpg  up to 5 MB, the minimum size of 70x70px"
                                 margin="normal"
-                                value={this.state.inputFile.name}
+                                value={inputFile.name}
                                 fileEvents={fileEvents}
                                 fullWidth
                                 readOnly
                                 required
-                                error={this.state.errorFile}
+                                error={inputFileError}
                             />
                         </Item>
                     </Item>
                     <Item>
-                        <Button variant="contained" text="Sign Up" onClick={this.signUp} disabled={false} />
+                        <Button variant="contained" text="Sign Up" onClick={this.signUp} disabled={!isValid} />
                     </Item>
                 </Container>
             </section>

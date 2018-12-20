@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { userSigningUp, userGettingToken, userGettingPosition } from 'actions/users';
+import { userSigningUp, userGettingToken, userGettingPosition, userSigningAuth } from 'actions/users';
 import SignUp from 'components/SignUp';
 
 
@@ -20,6 +20,7 @@ function mapDispatchToProps(dispatch, props) {
         userSigningUp: (data) => dispatch(userSigningUp(data)),
         userGettingToken: () => dispatch(userGettingToken()),
         userGettingPosition: () => dispatch(userGettingPosition()),
+        userSigningAuth: () => dispatch(userSigningAuth()),
     }
 }
 

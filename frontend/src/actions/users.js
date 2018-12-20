@@ -6,7 +6,14 @@ export const userGetToken = createAction('[User] getToken');
 export const userGetPositions = createAction('[User] getPositions');
 
 export const userSigningUp = (obj) => (dispatch) => {
-    const {token, inputName, inputEmail, inputPhone, inputPosition, inputFile} = obj;
+    const {
+        token,
+        inputName,
+        inputEmail,
+        inputPhone,
+        inputPosition,
+        inputFile,
+    } = obj;
     let formData = new FormData();
 
     formData.append('name', inputName);
@@ -17,18 +24,15 @@ export const userSigningUp = (obj) => (dispatch) => {
         fetch('https://frontend-test-assignment-api.abz.agency/api/v1/users', {
             method: 'post',
             headers: {
-                'Token': token,
-                'Content-Type': 'multipart/form-data'
+                'Token': token
             },
             body: formData,
         }).then((res) => {
             return res.json();
         }).then((user) => {
-            const storage = data.remember_me ? localStorage : sessionStorage;
-            storage.user = JSON.stringify(user);
-
-            dispatch(userSignedUp(user));
-        }).catch((err) => dispatch(userSignedUp(err)) );
+            console.log(user);
+            dispatch(userSignedUp(user['user_id']));
+        }).catch((err) => {dispatch(userSignedUp(err)); console.log(err) });
 };
 
 export const userSigningAuth = (id) => (dispatch) => {
