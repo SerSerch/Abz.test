@@ -4,6 +4,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Typography from "@material-ui/core/Typography";
+import Tooltip from "@material-ui/core/Tooltip";
 
 import {Container, Item} from "components/Content";
 import Button from 'components/Button';
@@ -78,15 +79,21 @@ class OurUsers extends PureComponent {
                                             <img className="ourusers__photo" onError={this.addDefaultSrc} src={item.photo} alt={item.name}/>
                                         </Item>
                                         <Item noSpace xs={12} lg={9} xl={10} className="ourusers__description">
-                                            <Typography variant="h4" className="ourusers__name _ellipsis">
-                                                {item.name}
-                                            </Typography>
-                                            <Typography className="paragraph _small _ellipsis">
-                                                {item.position}
-                                            </Typography>
-                                            <Typography className="paragraph _small _ellipsis">
-                                                {item.email}
-                                            </Typography>
+                                            <Tooltip title={item.name} aria-label={item.name}>
+                                                <Typography variant="h4" className="ourusers__name _ellipsis">
+                                                    {item.name}
+                                                </Typography>
+                                            </Tooltip>
+                                            <Tooltip title={item.position} aria-label={item.position}>
+                                                <Typography className="paragraph _small _ellipsis">
+                                                    {item.position}
+                                                </Typography>
+                                            </Tooltip>
+                                            <Tooltip title={item.email} aria-label={item.email}>
+                                                <Typography className="paragraph _small _ellipsis">
+                                                    {item.email}
+                                                </Typography>
+                                            </Tooltip>
                                             <Typography className="paragraph _small _ellipsis">
                                                 {item.phone.replace(
                                                     /(\+?\d{0,2})(\d{3})(\d{3})(\d{2})(\d{2})$/g,
@@ -105,15 +112,21 @@ class OurUsers extends PureComponent {
                                             <img className="ourusers__photo" onError={this.addDefaultSrc} src={item.photo} alt={item.name}/>
                                         </Item>
                                         <Item noSpace xs={12} lg={9} xl={10} className="ourusers__description">
-                                            <Typography variant="h4" className="ourusers__name _ellipsis">
-                                                {item.name}
-                                            </Typography>
-                                            <Typography className="paragraph _small _ellipsis">
-                                                {item.position}
-                                            </Typography>
-                                            <Typography className="paragraph _small _ellipsis">
-                                                {item.email}
-                                            </Typography>
+                                            <Tooltip title={item.name} aria-label={item.name}>
+                                                <Typography variant="h4" className="ourusers__name _ellipsis">
+                                                    {item.name}
+                                                </Typography>
+                                            </Tooltip>
+                                            <Tooltip title={item.position} aria-label={item.position}>
+                                                <Typography className="paragraph _small _ellipsis">
+                                                    {item.position}
+                                                </Typography>
+                                            </Tooltip>
+                                            <Tooltip title={item.email} aria-label={item.email}>
+                                                <Typography className="paragraph _small _ellipsis">
+                                                    {item.email}
+                                                </Typography>
+                                            </Tooltip>
                                             <Typography className="paragraph _small _ellipsis">
                                                 {item.phone.replace(
                                                     /(\+?\d{0,2})(\d{3})(\d{3})(\d{2})(\d{2})$/g,
