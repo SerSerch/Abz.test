@@ -8,25 +8,18 @@ import Toolbar from '@material-ui/core/Toolbar';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-
 import Divider from '@material-ui/core/Divider';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Tooltip from "@material-ui/core/Tooltip";
 
 import {Container, Item} from 'components/Content';
 import LineMenu from 'svg/LineMenu';
 import Logo from 'svg/Logo';
+import SignOut from 'svg/SignOut';
+import menu from '../../menu.js';
 
-const caption = {
-    "#aboutme": "About Me",
-    "#relationships": "Relationships",
-    "#requirements": "Requirements",
-    "#users": "Users",
-    "#signup": "Sign Up",
-};
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
 const scroll = el => el.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -73,7 +66,7 @@ class Navtop extends PureComponent {
                                 </HashLink>
                                 <div className="grow">
                                     <Container className="section _desctop" justify="center">
-                                        {Object.keys(caption).map(link => (
+                                        {Object.keys(menu).map(link => (
                                             <HashLink
                                                 scroll={scroll}
                                                 to={link}
@@ -81,17 +74,37 @@ class Navtop extends PureComponent {
                                                 key={link}
                                             >
                                                 <Item>
-                                                    <Typography>
-                                                        {caption[link]}
+                                                    <Typography className="text _link">
+                                                        {menu[link]}
                                                     </Typography>
                                                 </Item>
                                             </HashLink>
                                         ))}
                                     </Container>
                                 </div>
-                                <div className="user section _desctop">
-
-                                </div>
+                                {user ?
+                                    <div className="user section _desctop" wrap="nowrap">
+                                        <div className="user__info">
+                                            <Tooltip title={user.name} aria-label={user.name}>
+                                                <Typography className="paragraph _small _ellipsis">
+                                                    {user.name}
+                                                </Typography>
+                                            </Tooltip>
+                                            <Tooltip title={user.email} aria-label={user.email}>
+                                                <Typography className="paragraph _small _ellipsis _email">
+                                                    {user.email}
+                                                </Typography>
+                                            </Tooltip>
+                                        </div>
+                                        <div>
+                                            <img className="user__image" src={user.photo} alt=""/>
+                                        </div>
+                                        <div className="user__icon">
+                                            <SignOut className="icon _s" />
+                                        </div>
+                                    </div>
+                                    : ''
+                                }
                                 <div className="section _mobile">
                                     <IconButton className="menu__button _right"
                                                 aria-label="Menu"
@@ -116,26 +129,47 @@ class Navtop extends PureComponent {
                         role="button"
                         onClick={this.toggleDrawer('anchorMenu', false)}
                         onKeyDown={this.toggleDrawer('anchorMenu', false)}
+                        className="mobile-menu"
                     >
                         <List component="nav">
-                            <ListItem button onClick={this.toggleDrawer}>
-                                <ListItemIcon>
-                                    <ChevronLeftIcon />
-                                </ListItemIcon>
-                            </ListItem>
+                            {user ?
+                                <div className="user">
+                                    <div>
+                                        <img className="user__image" src={user.photo} alt=""/>
+                                    </div>
+                                    <div className="user__info">
+                                        <Typography className="paragraph _name _ellipsis">
+                                            {user.name}
+                                        </Typography>
+                                        <Typography className="paragraph _small _ellipsis _email">
+                                            {user.email}
+                                        </Typography>
+                                    </div>
+                                </div>
+                                : ''
+                            }
                             <Divider />
-                            {Object.keys(caption).map(link => (
+                            {Object.keys(menu).map(link => (
                                 <HashLink
                                     scroll={scroll}
                                     to={link}
                                     className="link"
                                     key={link}
                                 >
-                                    <ListItem button>
-                                        <ListItemText primary={caption[link]}/>
+                                    <ListItem button className="">
+                                        <ListItemText primary={menu[link]}/>
                                     </ListItem>
                                 </HashLink>
                             ))}
+                            <HashLink
+                                scroll={scroll}
+                                to="#top"
+                                className="link"
+                            >
+                                <ListItem button>
+                                    <ListItemText primary="Sign Out"/>
+                                </ListItem>
+                            </HashLink>
                         </List>
                     </div>
                 </SwipeableDrawer>

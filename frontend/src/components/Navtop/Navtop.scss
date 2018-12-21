@@ -28,9 +28,38 @@
 }
 
 .user {
-  width: 210px;
+  display: flex;
+  justify-content: right;
+  width: 225px;
   height: 40px;
-  background-color: #efefef;
+  &__info {
+    width: 130px;
+    padding-right: 11px;
+    box-sizing: border-box;
+    text-align: right;
+  }
+  &__image {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    padding-left: 16px;
+    box-sizing: border-box;
+  }
+}
+
+.paragraph {
+  &._email {
+    color: #8d8c8c;
+  }
+}
+
+.mobile-menu {
+  width: 250px;
 }
 
 @import "media";
