@@ -1,0 +1,35 @@
+/* xl */
+@media (min-width: 1281px) {
+
+}
+
+/* lg */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .signup {
+    padding-bottom: 106px;
+  }
+}
+
+/* md */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .signup {
+    padding: 100px 0 86px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+
+/* xs sm */
+@media (min-width: 320px) and (max-width: 767px) {
+  .signup {
+    padding: 33px 0 40px;
+    &__form {
+      padding: 15px 0 3px;
+    }
+    &__item {
+      padding: 6px 15px 5px;
+    }
+  }
+}

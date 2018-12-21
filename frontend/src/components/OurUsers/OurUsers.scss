@@ -1,0 +1,23 @@
+.ourusers {
+  padding: 120px 0 19px;
+  box-sizing: border-box;
+  &__box-users {
+    padding: 42px 0 13px;
+  }
+  &__photo {
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  &__name {
+    padding: 24px 0 9px;
+  }
+}
+
+.button {
+  &._hidden {
+    display: none;
+  }
+}
+@import "media";

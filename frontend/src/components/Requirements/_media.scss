@@ -1,0 +1,79 @@
+@media (-webkit-min-device-pixel-ratio: 2) and (max-width: 1199px),
+(min-width: 1200px) {
+  .requirements {
+    background-image: url(img/bg-2@2x.jpg);
+  }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1200px),
+(min-width: 1900px) {
+  .requirements {
+    background-image: url(img/bg-2@4x.jpg);
+  }
+}
+
+/* xl */
+@media (min-width: 1281px) {
+  .requirements {
+    min-height: 692px;
+    background-size: cover;
+    background-position: center 45.4%;
+  }
+}
+
+/* lg */
+@media (min-width: 1025px) and (max-width: 1280px) {
+  .requirements {
+    min-height: 755px;
+    background-size: 1327px auto;
+    background-position: left top;
+  }
+}
+
+/* md */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .requirements {
+    min-height: 878px;
+    background-size: cover;
+    background-position: left center;
+    padding-top: 99px;
+    &__man {
+      width: 343px;
+      height: 407px;
+    }
+  }
+
+  .section {
+    &._mdnone {
+      display: none;
+    }
+    &._md {
+      display: block;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+
+}
+
+/* xs sm */
+@media (min-width: 320px) and (max-width: 767px) {
+  .requirements {
+    min-height: 393px;
+    background-size: cover;
+    background-position: 40% center;
+    text-align: center;
+    padding-top:  51px;
+    &__caption {
+      padding-bottom: 10px;
+    }
+    &__text-box {
+      order: 1;
+    }
+    &__man {
+      width: 257px;
+      height: 216px;
+    }
+  }
+}
