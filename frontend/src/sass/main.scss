@@ -32,7 +32,6 @@ body {
 
 .footer {
 	flex: 0 0 auto;
-	text-align: center;
 }
 
 .link {
@@ -47,6 +46,15 @@ body {
 	&:active,
 	&:focus {
 		color: $p-color;
+		.icon {
+			fill: $p-color;
+		}
+	}
+}
+
+.text {
+	&._link {
+		color: inherit;
 	}
 }
 
@@ -60,6 +68,9 @@ body {
 	&._small {
 		font-size: 0.875rem;
 		line-height: 1.0625rem;
+	}
+	&._smalled {
+		font-size: 0.75rem;
 	}
 }
 
