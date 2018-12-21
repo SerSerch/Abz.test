@@ -31,7 +31,13 @@ class AboutMe extends PureComponent {
                         <Typography className="aboutme__text">
                             Last week, Google Search and Ads teams announced two new speed initiatives to help improve user-experience on the web.
                         </Typography>
-                        <Button className="_aboutme" variant="text" text="Sign Up" href="#signup" />
+                        <Button
+                            className="_aboutme"
+                            variant="text"
+                            text="Sign Up"
+                            href="#signup"
+                            aria-label="Sign Up"
+                        />
                     </Item>
                 </Item>
             </Container>

@@ -28,7 +28,12 @@ class Header extends PureComponent {
                             </Typography>
                         </Item>
                         <Item xs={12}>
-                            <Button variant="contained" text="Sign Up" href="#signup" />
+                            <Button
+                                variant="contained"
+                                text="Sign Up"
+                                href="#signup"
+                                aria-label="Sign Up"
+                            />
                         </Item>
                     </Item>
                 </Container>
