@@ -235,6 +235,7 @@ class Input extends PureComponent {
                             htmlFor={'_' + id}
                             variant="outlined"
                             className="_file"
+                            name="openfile"
                         />
                         : ''
                     }
@@ -244,8 +245,9 @@ class Input extends PureComponent {
                             htmlFor={'_' + id}
                             variant="outlined"
                             className="_file _icon"
+                            name="openfileicon"
                         >
-                            <Upload />
+                            <Upload />Upload
                         </Button>
                         : ''
                     }

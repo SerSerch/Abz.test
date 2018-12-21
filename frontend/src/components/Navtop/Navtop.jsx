@@ -61,6 +61,7 @@ class Navtop extends PureComponent {
                                     scroll={scroll}
                                     to="#top"
                                     className="link"
+                                    aria-label="Abz"
                                 >
                                     <Logo className="logo _navtop" />
                                 </HashLink>
@@ -72,6 +73,7 @@ class Navtop extends PureComponent {
                                                 to={link}
                                                 className="link"
                                                 key={link}
+                                                aria-label={menu[link]}
                                             >
                                                 <Item>
                                                     <Typography className="text _link">
@@ -155,6 +157,7 @@ class Navtop extends PureComponent {
                                     to={link}
                                     className="link"
                                     key={link}
+                                    aria-label={menu[link]}
                                 >
                                     <ListItem button className="">
                                         <ListItemText primary={menu[link]}/>
@@ -165,6 +168,7 @@ class Navtop extends PureComponent {
                                 scroll={scroll}
                                 to="#top"
                                 className="link"
+                                aria-label="Sign Out"
                             >
                                 <ListItem button>
                                     <ListItemText primary="Sign Out"/>

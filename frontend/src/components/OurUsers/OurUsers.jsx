@@ -145,6 +145,7 @@ class OurUsers extends PureComponent {
                             text="Show more"
                             onClick={this.nextPage}
                             className={buttonNextClasses}
+                            name="nextclasses"
                         />
                     </Item>
                 </Container>

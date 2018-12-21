@@ -30,6 +30,7 @@ class Footer extends PureComponent {
                             scroll={scroll}
                             to="#top"
                             className="footer__menu-link link"
+                            aria-label="Abz"
                         >
                             <Logo className="logo _navbot" />
                         </HashLink>
@@ -41,6 +42,7 @@ class Footer extends PureComponent {
                             to={link}
                             className="footer__menu-link link _s"
                             key={link}
+                            aria-label={menu[link]}
                         >
                             <Item xs={12} md={'auto'} className="footer__menu-item">
                                 <Typography className="text _link">
@@ -53,108 +55,120 @@ class Footer extends PureComponent {
                         <Divider />
                     </Item>
                     <Item xs={12} md={4}>
-                        <Link to="#" className="footer__line-contacts link _s">
+                        <a
+                            href="mailto:work.of.future@gmail.com"
+                            className="footer__line-contacts link _s"
+                            aria-label="mail"
+                        >
                             <Typography className="text _link">
                                 <Mail className="footer__icon icon _p" />
                                 <span className="footer__contacts">work.of.future@gmail.com</span>
                             </Typography>
-                        </Link>
-                        <Link to="#" className="footer__line-contacts link _s">
+                        </a>
+                        <a
+                            href="tel:+380507892498"
+                            className="footer__line-contacts link _s"
+                            aria-label="phone"
+                        >
                             <Typography className="text _link">
                                 <Phone className="footer__icon icon _p" />
                                 <span className="footer__contacts">+38 (050) 789 24 98</span>
                             </Typography>
-                        </Link>
-                        <Link to="#" className="footer__line-contacts link _s">
+                        </a>
+                        <a
+                            href="tel:+380955560845"
+                            className="footer__line-contacts link _s"
+                            aria-label="phone"
+                        >
                             <Typography className="text _link">
                                 <Cellphone  className="footer__icon icon _p" />
-                                <span className="footer__contacts">+38 (095) 556 0845</span>
+                                <span className="footer__contacts">+38 (095) 556 08 45</span>
                             </Typography>
-                        </Link>
+                        </a>
                     </Item>
                     <Item xs={12} md={2} className="footer__colum">
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="news">
                             <Typography className="text _link">
                                 News
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="blog">
                             <Typography className="text _link">
                                 Blog
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="partners">
                             <Typography className="text _link">
                                 Partners
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="shop">
                             <Typography className="text _link">
                                 Shop
                             </Typography>
                         </Link>
                     </Item>
                     <Item xs={12} md={2} className="footer__colum">
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="overview">
                             <Typography className="text _link">
                                 Overview
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="design">
                             <Typography className="text _link">
                                 Design
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="code">
                             <Typography className="text _link">
                                 Code
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="collaborate">
                             <Typography className="text _link">
                                 Collaborate
                             </Typography>
                         </Link>
                     </Item>
                     <Item xs={12} md={2} className="footer__colum">
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="tutorials">
                             <Typography className="text _link">
                                 Tutorials
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="resources">
                             <Typography className="text _link">
                                 Resources
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="guides">
                             <Typography className="text _link">
                                 Guides
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="examples">
                             <Typography className="text _link">
                                 Examples
                             </Typography>
                         </Link>
                     </Item>
                     <Item xs={12} md={2} className="footer__colum">
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="faq">
                             <Typography className="text _link">
                                 FAQ
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="terms">
                             <Typography className="text _link">
                                 Terms
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="conditions">
                             <Typography className="text _link">
                                 Conditions
                             </Typography>
                         </Link>
-                        <Link to="#" className="footer__link link _s">
+                        <Link to="#" className="footer__link link _s" aria-label="help">
                             <Typography className="text _link">
                                 Help
                             </Typography>
@@ -168,21 +182,21 @@ class Footer extends PureComponent {
                         </Item>
                         <div className="grow"></div>
                         <Item noSpace className="footer__soc-box">
-                            <Link to="#" className="footer__soc link _s">
-                                <Twitter className="icon _p" />
-                            </Link>
-                            <Link to="#" className="footer__soc link _s">
+                            <a href="#" className="footer__soc link _s" aria-label="facebook">
                                 <Facebook className="icon _p" />
-                            </Link>
-                            <Link to="#" className="footer__soc link _s">
+                            </a>
+                            <a href="#" className="footer__soc link _s" aria-label="linkedin">
                                 <Linkedin className="icon _p" />
-                            </Link>
-                            <Link to="#" className="footer__soc link _s">
+                            </a>
+                            <a href="#" className="footer__soc link _s" aria-label="instagram">
                                 <Instagram className="icon _p" />
-                            </Link>
-                            <Link to="#" className="footer__soc link _s">
+                            </a>
+                            <a href="#" className="footer__soc link _s" aria-label="twitter">
+                                <Twitter className="icon _p" />
+                            </a>
+                            <a href="#" className="footer__soc link _s" aria-label="pinterest">
                                 <Pinterest className="icon _p" />
-                            </Link>
+                            </a>
                         </Item>
                     </Item>
                 </Container>

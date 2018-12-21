@@ -268,7 +268,7 @@ class SignUp extends PureComponent {
                                 name="inputFile"
                                 type="file"
                                 variant="outlined"
-                                placeholder="Upload your photo"
+                                label="Upload your photo"
                                 helperText="File format jpg  up to 5 MB, the minimum size of 70x70px"
                                 margin="normal"
                                 value={inputFile.name}
@@ -281,7 +281,13 @@ class SignUp extends PureComponent {
                         </Item>
                     </Item>
                     <Item>
-                        <Button variant="contained" text="Sign Up" onClick={this.signUp} disabled={!isValid} />
+                        <Button
+                            variant="contained"
+                            text="Sign Up"
+                            onClick={this.signUp}
+                            disabled={!isValid}
+                            name="signup"
+                        />
                     </Item>
                 </Container>
             </section>
