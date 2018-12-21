@@ -3,7 +3,8 @@ const path = require('path'),
     SpriteLoaderPlugin = require( 'svg-sprite-loader/plugin' ),
     MiniCssExtractPlugin = require("mini-css-extract-plugin"),
     UglifyJsPlugin = require("uglifyjs-webpack-plugin"),
-    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+    OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin"),
+    CompressionPlugin = require('compression-webpack-plugin');
 
 module.exports = {
     entry:{
@@ -109,6 +110,7 @@ module.exports = {
             filename: '[name].css',
             chunkFilename: '[id].css',
         }),
-        new SpriteLoaderPlugin()
+        new SpriteLoaderPlugin(),
+        new CompressionPlugin(),
     ],
 };
